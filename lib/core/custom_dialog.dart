@@ -1,97 +1,123 @@
-// void showAlert(context) {
-//   showDialog(
-//       context: context,
-//       builder: (context) {
-//         return Dialog(
-//           backgroundColor: Colors.green,
-//           shape:
-//               RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
-//           child: Column(
-//             mainAxisSize: MainAxisSize.min,
-//             children: [
-//               Align(
-//                 alignment: Alignment.topRight,
-//                 child: GestureDetector(
-//                   onTap: () {
-//                     Get.back();
-//                   },
-//                   child: Container(
-//                     height: 25.r,
-//                     width: 25.r,
-//                     decoration: BoxDecoration(
-//                         color: AppColors.charcoal_797979,
-//                         borderRadius: BorderRadius.circular(50)),
-//                     child: Icon(
-//                       Icons.close_rounded,
-//                       size: 20.r,
-//                       color: AppColors.fontWhite_FFFFFF,
-//                     ),
-//                   ),
-//                 ),
-//               ),
-//               Padding(
-//                 padding: const EdgeInsets.all(14.0),
-//                 child: Column(
-//                   children: [
-//                     Icon(Icons.cancel),
-//                     MyText(
-//                         text: "Hello",
-//                         fontSize: 24,
-//                         textAlign: TextAlign.center,
-//                         fontClr: AppColors.fontBlack_233B45),
-//                   ],
-//                 ),
-//               ),
-//               Container(
-//                 width: double.infinity,
-//                 decoration: BoxDecoration(
-//                     color: AppColors.white_FFFFFF,
-//                     borderRadius: BorderRadius.only(
-//                         bottomLeft: Radius.circular(25),
-//                         bottomRight: Radius.circular(25))),
-//                 child: Column(mainAxisSize: MainAxisSize.max, children: [
-//                   15.hb,
-//                   MyText(
-//                       text:
-//                           "Reloaded 1 of 2317 libraries in 1,483ms (compile: 56 ms, reload: 823 ms, reassemble: 463 ms).",
-//                       fontSize: 12,
-//                       textAlign: TextAlign.center,
-//                       fontClr: AppColors.fontBlack_233B45),
+import 'dart:ui';
 
-//                   40.hb,
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:neeleez_b2b/app/constants/sized_box.dart';
+import 'package:neeleez_b2b/app/utils/assets_paths.dart';
+import 'package:neeleez_b2b/core/custom_outlined_button.dart';
 
-//                   /// [Remove Button]
-//                   SizedBox(
-//                     width: double.infinity,
-//                     child: Row(
-//                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//                       children: [
-//                         CustomElevatedButton(
-//                             width: 120.w,
-//                             height: 55.h,
-//                             title: "OK",
-//                             onTap: () {
-//                               Globals.guestUser = false;
-//                               Get.offAllNamed(Routes.LOGIN);
-//                             },
-//                             backgroundColor: AppColors.mintGreenDark_33BF90),
-//                         CustomElevatedButton(
-//                             width: 120.w,
-//                             height: 55.h,
-//                             title: "Cancel",
-//                             onTap: () {
-//                               Globals.guestUser = false;
-//                               Get.offAllNamed(Routes.LOGIN);
-//                             },
-//                             backgroundColor: AppColors.mintGreenDark_33BF90)
-//                       ],
-//                     ),
-//                   ),
-//                   10.hb,
-//                 ]),
-//               ),
-//             ],
-//           ),
-//         );
-//       });
-// }
+import '../app/utils/colors.dart';
+import 'custom_elevated_button.dart';
+
+void showAlert(
+    context, String title, String description, String buttonText, String icon) {
+  showDialog(
+      context: context,
+      builder: (context) {
+        return BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+          child: Dialog(
+            elevation: 56,
+            backgroundColor: AppColors.darkRed,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Align(
+                  alignment: Alignment.topRight,
+                  child: GestureDetector(
+                    onTap: () {
+                      Get.back();
+                    },
+                    child: Container(
+                        height: 25.r,
+                        width: 25.r,
+                        decoration: BoxDecoration(
+                            color: AppColors.fontColorWhite,
+                            borderRadius: BorderRadius.circular(50)),
+                        child: Image.asset(
+                          AssetsPaths.CLOSE_ICON,
+                          height: 35.r,
+                          width: 35.r,
+                        )),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(14.0),
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        icon,
+                        height: 50.r,
+                        width: 50.r,
+                      ),
+                      5.hb,
+                      Text(
+                        title,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 16.sp, color: AppColors.fontColorWhite),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      color: AppColors.fontColorWhite,
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(25),
+                          bottomRight: Radius.circular(25))),
+                  child: Column(mainAxisSize: MainAxisSize.max, children: [
+                    20.hb,
+                    Text(
+                      description,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: 16.sp, color: AppColors.fontColorGrey),
+                    ),
+
+                    20.hb,
+                    Divider(
+                      indent: 30.w,
+                      endIndent: 30.w,
+                      color: AppColors.fontColorGrey,
+                    ),
+                    20.hb,
+
+                    /// [Remove Button]
+                    SizedBox(
+                      width: double.infinity,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CustomOutlinedButton(
+                            width: 110.w,
+                            height: 40.h,
+                            text: buttonText,
+                            fontSize: 14,
+                          ),
+                          // 5.wb,
+                          // CustomElevatedButton(
+                          //   width: 110.w,
+                          //   height: 40.h,
+                          //   fontSize: 14,
+                          //   title: "YES",
+                          //   onTap: () {},
+                          //   backgroundColor2: AppColors.darkRed,
+                          //   backgroundColor1: AppColors.darkRed,
+                          // ),
+                        ],
+                      ),
+                    ),
+                    10.hb,
+                  ]),
+                ),
+              ],
+            ),
+          ),
+        );
+      });
+}

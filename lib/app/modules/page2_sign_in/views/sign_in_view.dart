@@ -64,7 +64,6 @@ class SignInView extends GetView<SignInController> {
               textAlign: TextAlign.center,
             ),
             12.hb,
-            Spacer(),
             Container(
               decoration: BoxDecoration(
                 color: AppColors.fontColorWhite,
