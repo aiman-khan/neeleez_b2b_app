@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:neeleez_b2b/app/constants/sized_box.dart';
-import 'package:neeleez_b2b/app/utils/assets_paths.dart';
 import 'package:neeleez_b2b/core/custom_outlined_button.dart';
+import 'package:neeleez_b2b/gen/assets.gen.dart';
 
 import '../app/utils/colors.dart';
 import 'custom_elevated_button.dart';
@@ -37,8 +37,7 @@ void showSummaryDialog(
                         decoration: BoxDecoration(
                             color: AppColors.fontColorWhite,
                             borderRadius: BorderRadius.circular(50)),
-                        child: Image.asset(
-                          AssetsPaths.CLOSE_ICON,
+                        child: Assets.pngs.close.image(
                           height: 35.r,
                           width: 35.r,
                         )),
@@ -78,8 +77,7 @@ void showSummaryDialog(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         20.hb,
-                        Image.asset(
-                          AssetsPaths.POINT_SUMMARY,
+                        Assets.pngs.pointSummary.image(
                           height: 180.h,
                           width: 170.w,
                         ),

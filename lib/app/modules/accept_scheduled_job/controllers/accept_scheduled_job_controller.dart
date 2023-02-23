@@ -1,0 +1,18 @@
+import 'package:get/get.dart';
+
+class Page9AcceptScheduledJobController extends GetxController {
+  //TODO: Implement Page9AcceptScheduledJobController
+
+  @override
+  void onInit() {
+    super.onInit();
+  }
+
+  @override
+  void onReady() {
+    super.onReady();
+  }
+
+  @override
+  void onClose() {}
+}

@@ -29,7 +29,7 @@ class NeeleezApp extends StatelessWidget {
       title: "Neeleez B2B App",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
-      theme: ThemeData(textTheme: GoogleFonts.montserratTextTheme()),
+      theme: ThemeData(fontFamily: "Montserrat"),
     );
   }
 }

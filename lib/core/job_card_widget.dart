@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:neeleez_b2b/app/constants/sized_box.dart';
-
-import '../app/utils/assets_paths.dart';
+import 'package:neeleez_b2b/gen/assets.gen.dart';
 import '../app/utils/colors.dart';
-import 'custom_elevated_button.dart';
-import 'custom_outlined_button.dart';
 
 class JobCardWidget extends StatelessWidget {
   JobCardWidget({
@@ -227,7 +224,7 @@ class JobCardWidget extends StatelessWidget {
               decoration: BoxDecoration(
                   border: Border.all(width: 5.w, color: Colors.white),
                   borderRadius: BorderRadius.circular(50)),
-              child: Image.asset(AssetsPaths.AVATAR),
+              child: Assets.pngs.avatar.image(),
             ),
           ),
         ],
