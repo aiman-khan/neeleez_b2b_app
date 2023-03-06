@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:neeleez_b2b/app/constants/sized_box.dart';
+import 'package:neeleez_b2b/app/routes/app_pages.dart';
 import '../../../../core/custom_elevated_button.dart';
 import '../../../../core/custom_outlined_button.dart';
 import '../../../../gen/assets.gen.dart';
@@ -19,9 +20,15 @@ class AddQuotationView extends GetView<AddQuotationController> {
         child: Column(
           children: [
             AppBar(
+              automaticallyImplyLeading: false,
               title: Row(children: [
-                Assets.pngs.back.image(
-                  height: 18.r,
+                InkWell(
+                  onTap: () {
+                    Get.back();
+                  },
+                  child: Assets.pngs.back.image(
+                    height: 18.r,
+                  ),
                 ),
                 30.wb,
                 Text(
@@ -571,7 +578,9 @@ class AddQuotationView extends GetView<AddQuotationController> {
                               height: 40.h,
                               fontSize: 14,
                               title: "Save",
-                              onTap: () {},
+                              onTap: () {
+                                Get.toNamed(Routes.VIEW_QUOTATION);
+                              },
                               widget: Stack(
                                 alignment: Alignment.center,
                                 children: [

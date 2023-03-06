@@ -22,6 +22,8 @@ abstract class Routes {
   static const VIEW_QUOTATION = _Paths.VIEW_QUOTATION;
   static const VIEW_INVOICE = _Paths.VIEW_INVOICE;
   static const TRADEPERSON_LIST = _Paths.TRADEPERSON_LIST;
+  static const TASK_DETAILS = _Paths.TASK_DETAILS;
+  static const RATING = _Paths.RATING;
 }
 
 abstract class _Paths {
@@ -41,4 +43,6 @@ abstract class _Paths {
   static const VIEW_QUOTATION = '/view-quotation';
   static const VIEW_INVOICE = '/view-invoice';
   static const TRADEPERSON_LIST = '/tradeperson-list';
+  static const TASK_DETAILS = '/task-details';
+  static const RATING = '/rating';
 }

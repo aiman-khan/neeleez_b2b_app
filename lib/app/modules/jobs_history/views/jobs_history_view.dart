@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:neeleez_b2b/app/constants/sized_box.dart';
 
 import '../../../../core/custom_elevated_button.dart';
+import '../../../../core/drawer.dart';
 import '../../../../core/job_card_widget.dart';
 import '../../../../gen/assets.gen.dart';
 import '../../../routes/app_pages.dart';
@@ -15,6 +16,8 @@ class JobsHistoryView extends GetView<JobsHistoryController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: MyDrawer(),
+      key: controller.scaffoldKey,
       body: Container(
         width: 1.sw,
         height: 1.sh,
@@ -22,11 +25,17 @@ class JobsHistoryView extends GetView<JobsHistoryController> {
           child: Column(
             children: [
               AppBar(
+                automaticallyImplyLeading: false,
                 title: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Assets.pngs.menu.image(
-                        height: 15.r,
+                      InkWell(
+                        onTap: () {
+                          controller.scaffoldKey.currentState!.openDrawer();
+                        },
+                        child: Assets.pngs.menu.image(
+                          height: 15.r,
+                        ),
                       ),
                       Row(children: [
                         Assets.pngs.flag.image(

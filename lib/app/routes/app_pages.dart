@@ -20,10 +20,14 @@ import 'package:neeleez_b2b/app/modules/points/bindings/points_binding.dart';
 import 'package:neeleez_b2b/app/modules/points/views/points_view.dart';
 import 'package:neeleez_b2b/app/modules/quotation_list/bindings/quotation_list_binding.dart';
 import 'package:neeleez_b2b/app/modules/quotation_list/views/quotation_list_view.dart';
+import 'package:neeleez_b2b/app/modules/rating/bindings/rating_binding.dart';
+import 'package:neeleez_b2b/app/modules/rating/views/rating_view.dart';
 import 'package:neeleez_b2b/app/modules/reports/bindings/reports_binding.dart';
 import 'package:neeleez_b2b/app/modules/reports/views/reports_view.dart';
 import 'package:neeleez_b2b/app/modules/sign_in/bindings/sign_in_binding.dart';
 import 'package:neeleez_b2b/app/modules/sign_in/views/sign_in_view.dart';
+import 'package:neeleez_b2b/app/modules/task_details/bindings/task_details_binding.dart';
+import 'package:neeleez_b2b/app/modules/task_details/views/task_details_view.dart';
 import 'package:neeleez_b2b/app/modules/tradeperson_list/bindings/tradeperson_list_binding.dart';
 import 'package:neeleez_b2b/app/modules/tradeperson_list/views/tradeperson_list_view.dart';
 import 'package:neeleez_b2b/app/modules/view_quotation/bindings/view_quotation_binding.dart';
@@ -36,7 +40,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.TRADEPERSON_LIST;
+  static const INITIAL = Routes.SIGN_IN;
 
   static final routes = [
     GetPage(
@@ -113,6 +117,16 @@ class AppPages {
       name: _Paths.TRADEPERSON_LIST,
       page: () => TradepersonListView(),
       binding: TradepersonListBinding(),
+    ),
+    GetPage(
+      name: _Paths.TASK_DETAILS,
+      page: () => TaskDetailsView(),
+      binding: TaskDetailsBinding(),
+    ),
+    GetPage(
+      name: _Paths.RATING,
+      page: () => RatingView(),
+      binding: RatingBinding(),
     ),
   ];
 }

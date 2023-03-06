@@ -118,11 +118,20 @@ class $AssetsPngsGen {
   /// File path: assets/pngs/avatar.png
   AssetGenImage get avatar => const AssetGenImage('assets/pngs/avatar.png');
 
+  /// File path: assets/pngs/average.png
+  AssetGenImage get average => const AssetGenImage('assets/pngs/average.png');
+
   /// File path: assets/pngs/awesome.png
   AssetGenImage get awesome => const AssetGenImage('assets/pngs/awesome.png');
 
   /// File path: assets/pngs/back.png
   AssetGenImage get back => const AssetGenImage('assets/pngs/back.png');
+
+  /// File path: assets/pngs/bad.png
+  AssetGenImage get bad => const AssetGenImage('assets/pngs/bad.png');
+
+  /// File path: assets/pngs/best.png
+  AssetGenImage get best => const AssetGenImage('assets/pngs/best.png');
 
   /// File path: assets/pngs/calendar.png
   AssetGenImage get calendar => const AssetGenImage('assets/pngs/calendar.png');
@@ -143,9 +152,17 @@ class $AssetsPngsGen {
   /// File path: assets/pngs/close.png
   AssetGenImage get close => const AssetGenImage('assets/pngs/close.png');
 
+  /// File path: assets/pngs/containerupsidedown.png
+  AssetGenImage get containerupsidedown =>
+      const AssetGenImage('assets/pngs/containerupsidedown.png');
+
   /// File path: assets/pngs/continue circle.png
   AssetGenImage get continueCircle =>
       const AssetGenImage('assets/pngs/continue circle.png');
+
+  /// File path: assets/pngs/cut container.png
+  AssetGenImage get cutContainer =>
+      const AssetGenImage('assets/pngs/cut container.png');
 
   /// File path: assets/pngs/error.png
   AssetGenImage get error => const AssetGenImage('assets/pngs/error.png');
@@ -173,6 +190,13 @@ class $AssetsPngsGen {
   /// File path: assets/pngs/gold point.png
   AssetGenImage get goldPoint =>
       const AssetGenImage('assets/pngs/gold point.png');
+
+  /// File path: assets/pngs/good.png
+  AssetGenImage get good => const AssetGenImage('assets/pngs/good.png');
+
+  /// File path: assets/pngs/grey cut container.png
+  AssetGenImage get greyCutContainer =>
+      const AssetGenImage('assets/pngs/grey cut container.png');
 
   /// File path: assets/pngs/home.png
   AssetGenImage get home => const AssetGenImage('assets/pngs/home.png');
@@ -321,6 +345,9 @@ class $AssetsPngsGen {
   AssetGenImage get worldIcon =>
       const AssetGenImage('assets/pngs/world_icon.png');
 
+  /// File path: assets/pngs/worst.png
+  AssetGenImage get worst => const AssetGenImage('assets/pngs/worst.png');
+
   /// File path: assets/pngs/your wallet.png
   AssetGenImage get yourWallet =>
       const AssetGenImage('assets/pngs/your wallet.png');
@@ -344,15 +371,20 @@ class $AssetsPngsGen {
         add,
         arrived,
         avatar,
+        average,
         awesome,
         back,
+        bad,
+        best,
         calendar,
         cancel,
         chat,
         checkout,
         clientPayment,
         close,
+        containerupsidedown,
         continueCircle,
+        cutContainer,
         error,
         export,
         filterByService,
@@ -361,6 +393,8 @@ class $AssetsPngsGen {
         flag,
         futureJobs,
         goldPoint,
+        good,
+        greyCutContainer,
         home,
         jbsHistory,
         locate,
@@ -403,6 +437,7 @@ class $AssetsPngsGen {
         viewPasswrd,
         workDone,
         worldIcon,
+        worst,
         yourWallet
       ];
 }

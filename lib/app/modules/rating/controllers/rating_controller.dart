@@ -1,9 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class JobsHistoryController extends GetxController {
-  //TODO: Implement JobsHistoryController
-  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+class RatingController extends GetxController {
+  //TODO: Implement RatingController
 
   final count = 0.obs;
   @override

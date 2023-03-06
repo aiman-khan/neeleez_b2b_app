@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:neeleez_b2b/app/constants/sized_box.dart';
+import 'package:neeleez_b2b/app/routes/app_pages.dart';
 import 'package:neeleez_b2b/gen/assets.gen.dart';
 
 import '../app/utils/colors.dart';
@@ -40,9 +41,12 @@ class _MyDrawerState extends State<MyDrawer> {
                       child:
                           Assets.pngs.profile.image(height: 64.r, width: 64.r),
                     ),
-                    Assets.pngs.menu.image(
-                      color: AppColors.fontColorWhite,
-                      height: 16.h,
+                    InkWell(
+                      onTap: () {},
+                      child: Assets.pngs.menu.image(
+                        color: AppColors.fontColorWhite,
+                        height: 16.h,
+                      ),
                     )
                   ],
                 ),
@@ -75,22 +79,34 @@ class _MyDrawerState extends State<MyDrawer> {
               54.hb,
 
               ///Home
-              Row(
-                children: [
-                  Assets.pngs.home.image(
-                    height: 20.r,
-                    width: 20.r,
-                  ),
-                  20.wb,
-                  Text(
-                    "Home",
-                    style: TextStyle(
-                      color: AppColors.fontColorWhite,
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w500,
+              InkWell(
+                onTap: () {
+                  if (Get.currentRoute == Routes.QUOTATION_LIST) {
+                    Scaffold.of(context).closeDrawer();
+                  } else {
+                    Scaffold.of(context).closeDrawer();
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                        Routes.QUOTATION_LIST,
+                        (Route<dynamic> route) => route.isFirst);
+                  }
+                },
+                child: Row(
+                  children: [
+                    Assets.pngs.home.image(
+                      height: 20.r,
+                      width: 20.r,
                     ),
-                  ),
-                ],
+                    20.wb,
+                    Text(
+                      "Home",
+                      style: TextStyle(
+                        color: AppColors.fontColorWhite,
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
               ),
               32.hb,
 
@@ -115,22 +131,34 @@ class _MyDrawerState extends State<MyDrawer> {
               32.hb,
 
               /// job history
-              Row(
-                children: [
-                  Assets.pngs.jbsHistory.image(
-                    height: 20.r,
-                    width: 20.r,
-                  ),
-                  20.wb,
-                  Text(
-                    "Jobs History",
-                    style: TextStyle(
-                      color: AppColors.fontColorWhite,
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w500,
+              InkWell(
+                onTap: () {
+                  if (Get.currentRoute == Routes.JOBS_HISTORY) {
+                    Scaffold.of(context).closeDrawer();
+                  } else {
+                    Scaffold.of(context).closeDrawer();
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                        Routes.JOBS_HISTORY,
+                        (Route<dynamic> route) => route.isFirst);
+                  }
+                },
+                child: Row(
+                  children: [
+                    Assets.pngs.jbsHistory.image(
+                      height: 20.r,
+                      width: 20.r,
                     ),
-                  ),
-                ],
+                    20.wb,
+                    Text(
+                      "Jobs History",
+                      style: TextStyle(
+                        color: AppColors.fontColorWhite,
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
               ),
 
               32.hb,
@@ -157,43 +185,65 @@ class _MyDrawerState extends State<MyDrawer> {
               32.hb,
 
               /// your wallet
-              Row(
-                children: [
-                  Assets.pngs.yourWallet.image(
-                    height: 20.r,
-                    width: 20.r,
-                  ),
-                  20.wb,
-                  Text(
-                    "Your Wallet",
-                    style: TextStyle(
-                      color: AppColors.fontColorWhite,
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w500,
+              InkWell(
+                onTap: () {
+                  if (Get.currentRoute == Routes.WALLET) {
+                    Scaffold.of(context).closeDrawer();
+                  } else {
+                    Scaffold.of(context).closeDrawer();
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                        Routes.WALLET, (Route<dynamic> route) => route.isFirst);
+                  }
+                },
+                child: Row(
+                  children: [
+                    Assets.pngs.yourWallet.image(
+                      height: 20.r,
+                      width: 20.r,
                     ),
-                  ),
-                ],
+                    20.wb,
+                    Text(
+                      "Your Wallet",
+                      style: TextStyle(
+                        color: AppColors.fontColorWhite,
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
               ),
 
               32.hb,
 
               /// points
-              Row(
-                children: [
-                  Assets.pngs.points.image(
-                    height: 20.r,
-                    width: 20.r,
-                  ),
-                  20.wb,
-                  Text(
-                    "Points",
-                    style: TextStyle(
-                      color: AppColors.fontColorWhite,
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w500,
+              InkWell(
+                onTap: () {
+                  if (Get.currentRoute == Routes.POINTS) {
+                    Scaffold.of(context).closeDrawer();
+                  } else {
+                    Scaffold.of(context).closeDrawer();
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                        Routes.POINTS, (Route<dynamic> route) => route.isFirst);
+                  }
+                },
+                child: Row(
+                  children: [
+                    Assets.pngs.points.image(
+                      height: 20.r,
+                      width: 20.r,
                     ),
-                  ),
-                ],
+                    20.wb,
+                    Text(
+                      "Points",
+                      style: TextStyle(
+                        color: AppColors.fontColorWhite,
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
               ),
               32.hb,
 

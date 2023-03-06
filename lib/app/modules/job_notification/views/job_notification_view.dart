@@ -3,10 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:neeleez_b2b/app/constants/sized_box.dart';
+import 'package:neeleez_b2b/app/routes/app_pages.dart';
 import 'package:neeleez_b2b/core/custom_elevated_button.dart';
 import 'package:neeleez_b2b/core/custom_outlined_button.dart';
 import 'package:neeleez_b2b/gen/assets.gen.dart';
 
+import '../../../../core/drawer.dart';
 import '../../../../core/job_card_widget.dart';
 import '../../../utils/colors.dart';
 import '../controllers/job_notification_controller.dart';
@@ -88,7 +90,9 @@ class Page3JobNotificationView extends GetView<Page3JobNotificationController> {
                         width: 150,
                         height: 40,
                         title: "Continue",
-                        onTap: () {},
+                        onTap: () {
+                          Get.toNamed(Routes.PAGE4_JOBS_LIST);
+                        },
                         backgroundColor1: AppColors.darkRed,
                         backgroundColor2: AppColors.lightRed,
                         widget: Stack(

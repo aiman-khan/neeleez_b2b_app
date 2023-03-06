@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:neeleez_b2b/app/modules/points/views/widgets/bar_chart.dart';
 
+import '../../../../core/drawer.dart';
 import '../controllers/points_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,6 +19,8 @@ class PointsView extends GetView<PointsController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: MyDrawer(),
+      key: controller.scaffoldKey,
       body: Container(
         width: 1.sw,
         height: 1.sh,
@@ -25,13 +28,19 @@ class PointsView extends GetView<PointsController> {
           child: Column(
             children: [
               AppBar(
+                automaticallyImplyLeading: false,
                 title: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
                         children: [
-                          Assets.pngs.menu.image(
-                            height: 15.r,
+                          InkWell(
+                            onTap: () {
+                              controller.scaffoldKey.currentState!.openDrawer();
+                            },
+                            child: Assets.pngs.menu.image(
+                              height: 15.r,
+                            ),
                           ),
                           28.wb,
                           Text(

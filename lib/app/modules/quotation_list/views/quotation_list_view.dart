@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:neeleez_b2b/app/constants/sized_box.dart';
 import 'package:neeleez_b2b/app/modules/quotation_list/views/widgets/quotation_container.dart';
+import 'package:neeleez_b2b/app/routes/app_pages.dart';
 
 import '../../../../core/custom_elevated_button.dart';
 import '../../../../core/custom_outlined_button.dart';
@@ -25,6 +26,7 @@ class QuotationListView extends GetView<QuotationListController> {
           child: Column(
             children: [
               AppBar(
+                automaticallyImplyLeading: false,
                 title: Row(children: [
                   Assets.pngs.back.image(
                     height: 18.r,
@@ -352,7 +354,12 @@ class QuotationListView extends GetView<QuotationListController> {
                             8.wb,
                             Assets.pngs.search.image(height: 35.r),
                             8.wb,
-                            Assets.pngs.add.image(height: 35.r)
+                            InkWell(
+                              onTap: () {
+                                Get.toNamed(Routes.ADD_QUOTATION);
+                              },
+                              child: Assets.pngs.add.image(height: 35.r),
+                            )
                           ],
                         ),
                         20.hb,

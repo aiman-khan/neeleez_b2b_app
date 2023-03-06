@@ -7,6 +7,7 @@ import 'package:neeleez_b2b/core/summary_dialog.dart';
 import 'package:neeleez_b2b/core/timer.dart';
 import 'package:neeleez_b2b/gen/assets.gen.dart';
 
+import '../../../../core/custom_dialog.dart';
 import '../../../../core/custom_elevated_button.dart';
 import '../../../../core/custom_outlined_button.dart';
 import '../../../utils/colors.dart';
@@ -25,8 +26,13 @@ class Page9AcceptScheduledJobView
           children: [
             AppBar(
               title: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-                Assets.pngs.back.image(
-                  height: 15.r,
+                InkWell(
+                  onTap: () {
+                    Get.back();
+                  },
+                  child: Assets.pngs.back.image(
+                    height: 15.r,
+                  ),
                 ),
                 30.wb,
                 Text(
@@ -93,7 +99,7 @@ class Page9AcceptScheduledJobView
                     //     "Verify",
                     //     "Are you sure you want to\naccept this job?",
                     //     "Accept",
-                    //     AssetsPaths.VERIFY_ICON);
+                    //     Assets.pngs.verify.path);
                     // showAlert(
                     //     context,
                     //     "Awesome",
@@ -393,6 +399,14 @@ class Page9AcceptScheduledJobView
                               height: 40.h,
                               text: "Cancel",
                               fontSize: 14,
+                              onPressed: () {
+                                showAlert(
+                                    context,
+                                    "Cancel",
+                                    "Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit",
+                                    "OK",
+                                    Assets.pngs.cancel.path);
+                              },
                               widget: Stack(
                                 alignment: Alignment.center,
                                 children: [
@@ -415,7 +429,14 @@ class Page9AcceptScheduledJobView
                               height: 40.h,
                               fontSize: 14,
                               title: "Accept",
-                              onTap: () {},
+                              onTap: () {
+                                showAlert(
+                                    context,
+                                    "Verify",
+                                    "Are you sure you want to\naccept this job?",
+                                    "Accept",
+                                    Assets.pngs.verify.path);
+                              },
                               widget: Stack(
                                 alignment: Alignment.center,
                                 children: [

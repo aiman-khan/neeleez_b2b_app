@@ -10,11 +10,13 @@ class CustomOutlinedButton extends StatelessWidget {
       required this.width,
       required this.fontSize,
       this.widget,
-      required this.height});
+      required this.height,
+      this.onPressed});
   final String text;
   final double width;
   final double height;
   final double fontSize;
+  final Function()? onPressed;
   Widget? widget;
 
   @override
@@ -30,11 +32,7 @@ class CustomOutlinedButton extends StatelessWidget {
           ),
           side: BorderSide(width: 2, color: AppColors.darkRed),
         ),
-        onPressed: () {
-          // if (!controller.isMembersSelected.value) {
-          //   controller.toggle();
-          // }
-        },
+        onPressed: onPressed,
         child: Row(
           mainAxisAlignment: widget != null
               ? MainAxisAlignment.spaceBetween

@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:neeleez_b2b/app/constants/sized_box.dart';
 import 'package:neeleez_b2b/app/routes/app_pages.dart';
+import 'package:neeleez_b2b/core/drawer.dart';
 import 'package:neeleez_b2b/gen/assets.gen.dart';
 
 import '../../../../core/custom_elevated_button.dart';
@@ -15,6 +16,8 @@ class JobsListView extends GetView<Page4JobsListController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: MyDrawer(),
+      key: controller.scaffoldKey,
       backgroundColor: Colors.grey,
       body: Container(
         width: 1.sw,
@@ -23,11 +26,17 @@ class JobsListView extends GetView<Page4JobsListController> {
           child: Column(
             children: [
               AppBar(
+                automaticallyImplyLeading: false,
                 title: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Assets.pngs.menu.image(
-                        height: 15.r,
+                      InkWell(
+                        onTap: () {
+                          controller.scaffoldKey.currentState!.openDrawer();
+                        },
+                        child: Assets.pngs.menu.image(
+                          height: 15.r,
+                        ),
                       ),
                       Row(children: [
                         Assets.pngs.flag.image(

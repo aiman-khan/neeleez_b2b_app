@@ -4,6 +4,7 @@ import 'package:neeleez_b2b/app/modules/points/views/widgets/bar_chart.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:neeleez_b2b/app/constants/sized_box.dart';
 import 'package:neeleez_b2b/app/modules/view_quotation/views/widgets/item_summary.dart';
+import 'package:neeleez_b2b/app/routes/app_pages.dart';
 import 'package:neeleez_b2b/app/utils/colors.dart';
 import '../../../../core/custom_elevated_button.dart';
 import '../../../../core/custom_outlined_button.dart';
@@ -22,10 +23,16 @@ class ViewQuotationView extends GetView<ViewQuotationController> {
           child: Column(
             children: [
               AppBar(
+                automaticallyImplyLeading: false,
                 title: Row(children: [
                   Row(children: [
-                    Assets.pngs.back.image(
-                      height: 15.r,
+                    InkWell(
+                      onTap: () {
+                        Get.back();
+                      },
+                      child: Assets.pngs.back.image(
+                        height: 18.r,
+                      ),
                     ),
                     30.wb,
                     Text(
@@ -300,6 +307,9 @@ class ViewQuotationView extends GetView<ViewQuotationController> {
                             height: 45.h,
                             text: "Go Back",
                             fontSize: 14,
+                            onPressed: () {
+                              Get.back();
+                            },
                             widget: Stack(
                               alignment: Alignment.center,
                               children: [
@@ -321,7 +331,9 @@ class ViewQuotationView extends GetView<ViewQuotationController> {
                             height: 45.h,
                             fontSize: 14,
                             title: "Make It Invoice",
-                            onTap: () {},
+                            onTap: () {
+                              Get.toNamed(Routes.RATING);
+                            },
                             widget: Stack(
                               alignment: Alignment.center,
                               children: [
