@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:neeleez_b2b/app/constants/sized_box.dart';
+import 'package:neeleez_b2b/app/data/remote/api_services.dart';
 import 'package:neeleez_b2b/app/routes/app_pages.dart';
 import 'package:neeleez_b2b/core/custom_elevated_button.dart';
 import 'package:neeleez_b2b/gen/assets.gen.dart';
@@ -75,8 +76,9 @@ class SignInView extends GetView<SignInController> {
                   children: [
                     CustomTextField(
                       // prefixIcon: Image.asset(AssetsPaths.PHONE_ICON),
-                      hintText: "Phone Number",
+                      hintText: "Username",
                       keyboardType: TextInputType.phone,
+                      controller: controller.emailTextController,
                       prefixIcon: Padding(
                         padding: EdgeInsets.only(left: 2.w),
                         child: CircleAvatar(
@@ -108,6 +110,7 @@ class SignInView extends GetView<SignInController> {
                         ),
                         hintText: "Password",
                         keyboardType: TextInputType.visiblePassword,
+                        controller: controller.passwordTextController,
                         validator: (v) {
                           if (v!.isEmpty) {
                             return "";
@@ -161,8 +164,15 @@ class SignInView extends GetView<SignInController> {
                         height: 52,
                         title: "Login",
                         fontSize: 14,
-                        onTap: () {
-                          Get.toNamed(Routes.PAGE3_JOB_NOTIFICATION);
+                        onTap: () async {
+                          // await controller.login('zbr', '123456Aa1@');
+                          // await controller.sendVerificationEmail('zbr', 1);
+                          // await controller.loginUser('zbr', '123456Aa1@');
+
+                          await controller.loginUser(
+                              controller.emailTextController.text,
+                              controller.passwordTextController.text);
+                          // Get.toNamed(Routes.PAGE3_JOB_NOTIFICATION);
                         },
                         backgroundColor1: AppColors.lightRed,
                         backgroundColor2: AppColors.lightRed)

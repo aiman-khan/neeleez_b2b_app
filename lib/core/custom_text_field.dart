@@ -8,6 +8,7 @@ class CustomTextField extends StatelessWidget {
       this.textInputAction = TextInputAction.next,
       this.prefixIcon,
       this.suffixIcon,
+      required this.controller,
       required this.hintText});
 
   TextInputType keyboardType;
@@ -16,11 +17,13 @@ class CustomTextField extends StatelessWidget {
   String hintText;
   Widget? prefixIcon;
   Widget? suffixIcon;
+  TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       validator: validator,
+      controller: controller,
       cursorColor: Colors.black,
       cursorHeight: 20,
       style: TextStyle(
