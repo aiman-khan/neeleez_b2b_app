@@ -24,6 +24,7 @@ abstract class Routes {
   static const TRADEPERSON_LIST = _Paths.TRADEPERSON_LIST;
   static const TASK_DETAILS = _Paths.TASK_DETAILS;
   static const RATING = _Paths.RATING;
+  static const OTP_VERIFICATION = _Paths.OTP_VERIFICATION;
 }
 
 abstract class _Paths {
@@ -45,4 +46,5 @@ abstract class _Paths {
   static const TRADEPERSON_LIST = '/tradeperson-list';
   static const TASK_DETAILS = '/task-details';
   static const RATING = '/rating';
+  static const OTP_VERIFICATION = '/otp-verification';
 }
