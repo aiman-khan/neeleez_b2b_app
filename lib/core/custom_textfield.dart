@@ -1,113 +1,99 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter/services.dart';
-// import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-// import '../app/utils/colors.dart';
+import '../app/utils/colors.dart';
 
-// class CustomTextFormField extends StatelessWidget {
-//   CustomTextFormField(
-//       {super.key,
-//       required this.keyboardType,
-//       required this.validator,
-//       this.hintText,
-//       this.obscureText = false,
-//       this.suffixIcon,
-//       this.focusNode,
-//       this.onSaved,
-//       this.onEditingComplete,
-//       this.controller,
-//       this.autofocus = false,
-//       this.enabled = true,
-//       this.onChanged,
-//       this.prefixIcon,
-//       this.onTap,
-//       this.minLine = 1,
-//       this.maxLines = 1,
-//       this.radius = 56,
-//       this.inputFormatters,
-//       this.fillColor = Colors.white,
-//       this.textInputAction = TextInputAction.next,
-//       this.borderColor = AppColors.fontColorGrey});
+class CustomTextFormField extends StatelessWidget {
+  CustomTextFormField({
+    required this.labelText,
+    required this.keyboardType,
+    required this.validator,
+    this.hintText,
+    this.obscureText = false,
+    this.suffixIcon,
+    this.focusNode,
+    this.onSaved,
+    this.onEditingComplete,
+    this.controller,
+    this.autofocus = false,
+    this.enabled = true,
+    this.onChanged,
+    this.prefixIcon,
+  });
 
-//   Widget? suffixIcon;
-//   Widget? prefixIcon;
-//   String? hintText;
-//   bool obscureText;
-//   TextInputType keyboardType;
-//   FocusNode? focusNode;
-//   Color? fillColor;
-//   TextInputAction textInputAction;
-//   String? Function(String?)? validator;
-//   void Function(String?)? onSaved;
-//   Color borderColor;
-//   List<TextInputFormatter>? inputFormatters;
-//   void Function()? onEditingComplete;
-//   VoidCallback? onTap;
-//   void Function(String?)? onChanged;
+  Widget? suffixIcon;
+  Widget? prefixIcon;
+  String labelText;
+  String? hintText;
+  bool obscureText;
+  TextInputType keyboardType;
+  FocusNode? focusNode;
+  String? Function(String?)? validator;
+  void Function(String?)? onSaved;
 
-//   TextEditingController? controller;
-//   bool autofocus = false;
-//   bool enabled = true;
-//   int maxLines;
-//   int minLine;
-//   double radius;
+  void Function()? onEditingComplete;
+  void Function(String?)? onChanged;
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return TextFormField(
-//       onTap: onTap,
-//       onChanged: onChanged,
-//       autofocus: autofocus,
-//       enabled: enabled,
-//       controller: controller,
-//       keyboardType: keyboardType,
-//       obscureText: obscureText,
-//       maxLines: maxLines,
-//       minLines: minLine,
-//       validator: validator,
-//       onSaved: onSaved,
-//       onEditingComplete: onEditingComplete,
-//       textInputAction: textInputAction,
-//       inputFormatters: inputFormatters,
-//       focusNode: focusNode,
-//       style: TextStyle(
-//         color: AppColors.fontColorGrey,
-//         fontSize: 16.sp,
-//       ),
-//       cursorColor: AppColors.fontColorGrey,
-//       cursorHeight: 20.sp,
-//       decoration: InputDecoration(
-//         contentPadding: EdgeInsets.symmetric(horizontal: 25.w, vertical: 18.h),
-//         prefixIcon: prefixIcon,
-//         hintText: hintText,
-//         hintStyle: TextStyle(
-//           color: AppColors.fontColorGrey.withOpacity(0.5),
-//           fontSize: 16.sp,
-//         ),
-//         errorStyle: TextStyle(
-//           fontSize: 12.sp,
-//         ),
-//         errorMaxLines: 2,
-//         filled: true,
-//         fillColor: fillColor,
-//         focusedErrorBorder: OutlineInputBorder(
-//           borderSide: BorderSide(color: AppColors.darkRed),
-//           borderRadius: BorderRadius.circular(radius.r),
-//         ),
-//         errorBorder: OutlineInputBorder(
-//           borderSide: BorderSide(color: AppColors.darkRed),
-//           borderRadius: BorderRadius.circular(radius.r),
-//         ),
-//         enabledBorder: OutlineInputBorder(
-//           borderSide: BorderSide(color: borderColor),
-//           borderRadius: BorderRadius.circular(radius.r),
-//         ),
-//         focusedBorder: OutlineInputBorder(
-//           borderRadius: BorderRadius.circular(radius.r),
-//           borderSide: BorderSide(color: borderColor),
-//         ),
-//         suffixIcon: suffixIcon,
-//       ),
-//     );
-//   }
-// }
+  TextEditingController? controller;
+  bool autofocus = false;
+  bool enabled = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 65.h,
+      child: TextFormField(
+        onChanged: onChanged,
+        autofocus: autofocus,
+        enabled: enabled,
+        controller: controller,
+        keyboardType: keyboardType,
+        obscureText: obscureText,
+        validator: validator,
+        onSaved: onSaved,
+        onEditingComplete: onEditingComplete,
+        focusNode: focusNode,
+        style: TextStyle(
+          color: AppColors.fontColorBlack,
+          fontSize: 16.sp,
+        ),
+        cursorColor: AppColors.fontColorBlack,
+        cursorHeight: 16.sp,
+        decoration: InputDecoration(
+          contentPadding:
+              EdgeInsets.symmetric(horizontal: 25.w, vertical: 20.h),
+          prefixIcon: prefixIcon,
+          hintText: hintText,
+          hintStyle: TextStyle(
+            color: AppColors.fontColorBlack,
+            fontSize: 16.sp,
+          ),
+          labelText: labelText,
+          labelStyle: TextStyle(
+            color: AppColors.fontColorBlack,
+            fontSize: 16.sp,
+          ),
+          filled: true,
+          fillColor: Colors.white,
+          focusedErrorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: AppColors.lightRed),
+            borderRadius: BorderRadius.circular(56.r),
+          ),
+          errorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: AppColors.lightRed),
+            borderRadius: BorderRadius.circular(56.r),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: AppColors.lightGrey),
+            borderRadius: BorderRadius.circular(56.r),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(56.r),
+            borderSide: BorderSide(color: AppColors.lightGrey),
+          ),
+          suffixIcon: suffixIcon,
+        ),
+      ),
+    );
+  }
+}

@@ -14,6 +14,8 @@ import 'package:neeleez_b2b/app/modules/jobs_history/bindings/jobs_history_bindi
 import 'package:neeleez_b2b/app/modules/jobs_history/views/jobs_history_view.dart';
 import 'package:neeleez_b2b/app/modules/jobs_list/bindings/jobs_list_binding.dart';
 import 'package:neeleez_b2b/app/modules/jobs_list/views/jobs_list_view.dart';
+import 'package:neeleez_b2b/app/modules/otp_verification/bindings/otp_verification_binding.dart';
+import 'package:neeleez_b2b/app/modules/otp_verification/views/otp_verification_view.dart';
 import 'package:neeleez_b2b/app/modules/parts_and_services/bindings/parts_and_services_binding.dart';
 import 'package:neeleez_b2b/app/modules/parts_and_services/views/parts_and_services_view.dart';
 import 'package:neeleez_b2b/app/modules/points/bindings/points_binding.dart';
@@ -127,6 +129,11 @@ class AppPages {
       name: _Paths.RATING,
       page: () => RatingView(),
       binding: RatingBinding(),
+    ),
+    GetPage(
+      name: _Paths.OTP_VERIFICATION,
+      page: () => OtpVerificationView(),
+      binding: OtpVerificationBinding(),
     ),
   ];
 }
