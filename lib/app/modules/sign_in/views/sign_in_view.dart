@@ -97,40 +97,42 @@ class SignInView extends GetView<SignInController> {
                         },
                       ),
                       16.hb,
-                      CustomTextField(
-                          obscureText: controller.isPasswordVisible.value,
-                          prefixIcon: Padding(
-                            padding: EdgeInsets.only(left: 2.w),
-                            child: CircleAvatar(
-                              backgroundColor:
-                                  AppColors.fontColorGrey.withOpacity(0.2),
-                              child: Assets.pngs.passwordGrey.image(),
+                      Obx(
+                        () => CustomTextField(
+                            obscureText: controller.isPasswordVisible.value,
+                            prefixIcon: Padding(
+                              padding: EdgeInsets.only(left: 2.w),
+                              child: CircleAvatar(
+                                backgroundColor:
+                                    AppColors.fontColorGrey.withOpacity(0.2),
+                                child: Assets.pngs.passwordGrey.image(),
+                              ),
                             ),
-                          ),
-                          suffixIcon: Padding(
-                              padding: EdgeInsets.only(right: 15.w),
-                              child: InkWell(
-                                  onTap: () {
-                                    controller.isPasswordVisible.value =
-                                        !controller.isPasswordVisible.value;
-                                  },
-                                  child: controller.isPasswordVisible.value
-                                      ? Icon(
-                                          Icons.visibility_outlined,
-                                          size: 22.h,
-                                          color: Colors.black,
-                                        )
-                                      : Icon(Icons.visibility_off_outlined,
-                                          size: 22.h, color: Colors.black))),
-                          hintText: "Password",
-                          keyboardType: TextInputType.visiblePassword,
-                          controller: controller.passwordTextController,
-                          validator: (v) {
-                            if (v!.isEmpty) {
-                              return "Password is required";
-                            }
-                            return null;
-                          }),
+                            suffixIcon: Padding(
+                                padding: EdgeInsets.only(right: 15.w),
+                                child: InkWell(
+                                    onTap: () {
+                                      controller.isPasswordVisible.value =
+                                          !controller.isPasswordVisible.value;
+                                    },
+                                    child: controller.isPasswordVisible.value
+                                        ? Icon(
+                                            Icons.visibility_outlined,
+                                            size: 22.h,
+                                            color: Colors.black,
+                                          )
+                                        : Icon(Icons.visibility_off_outlined,
+                                            size: 22.h, color: Colors.black))),
+                            hintText: "Password",
+                            keyboardType: TextInputType.visiblePassword,
+                            controller: controller.passwordTextController,
+                            validator: (v) {
+                              if (v!.isEmpty) {
+                                return "Password is required";
+                              }
+                              return null;
+                            }),
+                      ),
                       20.hb,
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -162,13 +164,18 @@ class SignInView extends GetView<SignInController> {
                               ),
                             ],
                           ),
-                          Text(
-                            'Forgot Password?',
-                            style: TextStyle(
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.bold,
-                                color: AppColors.fontColorGrey),
-                            textAlign: TextAlign.center,
+                          InkWell(
+                            onTap: () {
+                              Get.toNamed(Routes.FORGET_PASSWORD);
+                            },
+                            child: Text(
+                              'Forgot Password?',
+                              style: TextStyle(
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.bold,
+                                  color: AppColors.fontColorGrey),
+                              textAlign: TextAlign.center,
+                            ),
                           ),
                         ],
                       ),

@@ -4,6 +4,8 @@ import 'package:neeleez_b2b/app/modules/accept_scheduled_job/bindings/accept_sch
 import 'package:neeleez_b2b/app/modules/accept_scheduled_job/views/accept_scheduled_job_view.dart';
 import 'package:neeleez_b2b/app/modules/add_quotation/bindings/add_quotation_binding.dart';
 import 'package:neeleez_b2b/app/modules/add_quotation/views/add_quotation_view.dart';
+import 'package:neeleez_b2b/app/modules/forget_password/bindings/forget_password_binding.dart';
+import 'package:neeleez_b2b/app/modules/forget_password/views/forget_password_view.dart';
 import 'package:neeleez_b2b/app/modules/home/bindings/home_binding.dart';
 import 'package:neeleez_b2b/app/modules/home/views/home_view.dart';
 import 'package:neeleez_b2b/app/modules/job_details/bindings/job_details_binding.dart';
@@ -134,6 +136,11 @@ class AppPages {
       name: _Paths.OTP_VERIFICATION,
       page: () => OtpVerificationView(),
       binding: OtpVerificationBinding(),
+    ),
+    GetPage(
+      name: _Paths.FORGET_PASSWORD,
+      page: () => ForgetPasswordView(),
+      binding: ForgetPasswordBinding(),
     ),
   ];
 }

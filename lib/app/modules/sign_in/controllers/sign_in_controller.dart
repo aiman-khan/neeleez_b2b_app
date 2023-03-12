@@ -14,7 +14,7 @@ class SignInController extends GetxController {
   TextEditingController emailTextController = TextEditingController();
   TextEditingController passwordTextController = TextEditingController();
 
-  final isPasswordVisible = true.obs;
+  final isPasswordVisible = false.obs;
 
   Dio dio = Dio();
 
