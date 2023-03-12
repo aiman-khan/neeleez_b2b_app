@@ -9,6 +9,7 @@ import 'package:neeleez_b2b/core/custom_text_field.dart';
 import '../../../../core/custom_elevated_button.dart';
 import '../../../../core/custom_textfield.dart';
 import '../../../../gen/assets.gen.dart';
+import '../../../routes/app_pages.dart';
 import '../../../utils/colors.dart';
 import '../controllers/otp_verification_controller.dart';
 
@@ -106,7 +107,7 @@ class OtpVerificationView extends GetView<OtpVerificationController> {
                     title: "Verify OTP",
                     fontSize: 14,
                     onTap: () {
-                      // Get.toNamed(Routes.PAGE3_JOB_NOTIFICATION);
+                      Get.toNamed(Routes.PAGE3_JOB_NOTIFICATION);
                     },
                     backgroundColor1: AppColors.lightRed,
                     backgroundColor2: AppColors.lightRed)

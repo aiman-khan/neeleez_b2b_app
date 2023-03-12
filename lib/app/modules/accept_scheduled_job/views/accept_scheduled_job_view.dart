@@ -405,7 +405,8 @@ class Page9AcceptScheduledJobView
                                     "Cancel",
                                     "Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit",
                                     "OK",
-                                    Assets.pngs.cancel.path);
+                                    Assets.pngs.cancel.path,
+                                    () {});
                               },
                               widget: Stack(
                                 alignment: Alignment.center,
@@ -435,7 +436,8 @@ class Page9AcceptScheduledJobView
                                     "Verify",
                                     "Are you sure you want to\naccept this job?",
                                     "Accept",
-                                    Assets.pngs.verify.path);
+                                    Assets.pngs.verify.path,
+                                    () {});
                               },
                               widget: Stack(
                                 alignment: Alignment.center,

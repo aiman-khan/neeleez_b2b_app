@@ -71,112 +71,127 @@ class SignInView extends GetView<SignInController> {
               ),
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 45.h),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    CustomTextField(
-                      // prefixIcon: Image.asset(AssetsPaths.PHONE_ICON),
-                      hintText: "Username",
-                      keyboardType: TextInputType.phone,
-                      controller: controller.emailTextController,
-                      prefixIcon: Padding(
-                        padding: EdgeInsets.only(left: 2.w),
-                        child: CircleAvatar(
-                          child: Assets.pngs.phoneIconRed.image(),
-                          backgroundColor:
-                              AppColors.fontColorGrey.withOpacity(0.2),
-                        ),
-                      ),
-                      validator: (v) {
-                        if (v!.isEmpty) {
-                          return "";
-                        }
-                        return null;
-                      },
-                    ),
-                    16.hb,
-                    CustomTextField(
+                child: Form(
+                  key: controller.signInKey,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      CustomTextField(
+                        // prefixIcon: Image.asset(AssetsPaths.PHONE_ICON),
+                        hintText: "Username",
+                        keyboardType: TextInputType.phone,
+                        controller: controller.emailTextController,
                         prefixIcon: Padding(
                           padding: EdgeInsets.only(left: 2.w),
                           child: CircleAvatar(
+                            child: Assets.pngs.phoneIconRed.image(),
                             backgroundColor:
                                 AppColors.fontColorGrey.withOpacity(0.2),
-                            child: Assets.pngs.passwordGrey.image(),
                           ),
                         ),
-                        suffixIcon: Padding(
-                          padding: EdgeInsets.only(right: 15.w),
-                          child: Assets.pngs.viewPasswrd.image(),
-                        ),
-                        hintText: "Password",
-                        keyboardType: TextInputType.visiblePassword,
-                        controller: controller.passwordTextController,
                         validator: (v) {
                           if (v!.isEmpty) {
-                            return "";
+                            return "Username is required";
                           }
                           return null;
-                        }),
-                    20.hb,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Container(
-                              height: 18.r,
-                              width: 18.r,
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                color: AppColors.lightRed,
-                              ),
-                              child: Icon(
-                                Icons.check,
-                                color: AppColors.fontColorWhite,
-                                size: 14.r,
-                              ),
-                            ),
-                            5.wb,
-                            Text(
-                              'Remember me',
-                              style: TextStyle(
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.bold,
-                                  color: AppColors.fontColorGrey),
-                              textAlign: TextAlign.center,
-                            ),
-                          ],
-                        ),
-                        Text(
-                          'Forgot Password?',
-                          style: TextStyle(
-                              fontSize: 12.sp,
-                              fontWeight: FontWeight.bold,
-                              color: AppColors.fontColorGrey),
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
-                    ),
-                    45.hb,
-                    CustomElevatedButton(
-                        width: 360,
-                        height: 52,
-                        title: "Login",
-                        fontSize: 14,
-                        onTap: () async {
-                          // await controller.login('zbr', '123456Aa1@');
-                          // await controller.sendVerificationEmail('zbr', 1);
-                          // await controller.loginUser('zbr', '123456Aa1@');
-
-                          await controller.loginUser(
-                              controller.emailTextController.text,
-                              controller.passwordTextController.text);
-                          // Get.toNamed(Routes.PAGE3_JOB_NOTIFICATION);
                         },
-                        backgroundColor1: AppColors.lightRed,
-                        backgroundColor2: AppColors.lightRed)
-                  ],
+                      ),
+                      16.hb,
+                      CustomTextField(
+                          obscureText: controller.isPasswordVisible.value,
+                          prefixIcon: Padding(
+                            padding: EdgeInsets.only(left: 2.w),
+                            child: CircleAvatar(
+                              backgroundColor:
+                                  AppColors.fontColorGrey.withOpacity(0.2),
+                              child: Assets.pngs.passwordGrey.image(),
+                            ),
+                          ),
+                          suffixIcon: Padding(
+                              padding: EdgeInsets.only(right: 15.w),
+                              child: InkWell(
+                                  onTap: () {
+                                    controller.isPasswordVisible.value =
+                                        !controller.isPasswordVisible.value;
+                                  },
+                                  child: controller.isPasswordVisible.value
+                                      ? Icon(
+                                          Icons.visibility_outlined,
+                                          size: 22.h,
+                                          color: Colors.black,
+                                        )
+                                      : Icon(Icons.visibility_off_outlined,
+                                          size: 22.h, color: Colors.black))),
+                          hintText: "Password",
+                          keyboardType: TextInputType.visiblePassword,
+                          controller: controller.passwordTextController,
+                          validator: (v) {
+                            if (v!.isEmpty) {
+                              return "Password is required";
+                            }
+                            return null;
+                          }),
+                      20.hb,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Container(
+                                height: 18.r,
+                                width: 18.r,
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: AppColors.lightRed,
+                                ),
+                                child: Icon(
+                                  Icons.check,
+                                  color: AppColors.fontColorWhite,
+                                  size: 14.r,
+                                ),
+                              ),
+                              5.wb,
+                              Text(
+                                'Remember me',
+                                style: TextStyle(
+                                    fontSize: 12.sp,
+                                    fontWeight: FontWeight.bold,
+                                    color: AppColors.fontColorGrey),
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
+                          ),
+                          Text(
+                            'Forgot Password?',
+                            style: TextStyle(
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.bold,
+                                color: AppColors.fontColorGrey),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                      45.hb,
+                      CustomElevatedButton(
+                          width: 360,
+                          height: 52,
+                          title: "Login",
+                          fontSize: 14,
+                          onTap: () async {
+                            if (controller.signInKey.currentState!.validate()) {
+                              await controller.logiiiin(
+                                  controller.emailTextController.text,
+                                  controller.passwordTextController.text);
+                            }
+                            // await controller.logiiiin('zbr', '123456Aa1@');
+
+                            // Get.toNamed(Routes.PAGE3_JOB_NOTIFICATION);
+                          },
+                          backgroundColor1: AppColors.lightRed,
+                          backgroundColor2: AppColors.lightRed)
+                    ],
+                  ),
                 ),
               ),
             )

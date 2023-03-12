@@ -9,8 +9,8 @@ import 'package:neeleez_b2b/gen/assets.gen.dart';
 
 import '../app/utils/colors.dart';
 
-void showAlert(
-    context, String title, String description, String buttonText, String icon) {
+void showAlert(context, String title, String description, String buttonText,
+    String icon, Function()? onPressed) {
   showDialog(
       context: context,
       builder: (context) {
@@ -76,7 +76,6 @@ void showAlert(
                       style: TextStyle(
                           fontSize: 16.sp, color: AppColors.fontColorGrey),
                     ),
-
                     20.hb,
                     Divider(
                       indent: 30.w,
@@ -84,8 +83,6 @@ void showAlert(
                       color: AppColors.fontColorGrey,
                     ),
                     20.hb,
-
-                    /// [Remove Button]
                     SizedBox(
                       width: double.infinity,
                       child: Row(
@@ -96,6 +93,7 @@ void showAlert(
                             height: 40.h,
                             text: buttonText,
                             fontSize: 14,
+                            onPressed: onPressed!,
                           ),
                           // 5.wb,
                           // CustomElevatedButton(
