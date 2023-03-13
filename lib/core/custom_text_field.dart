@@ -30,6 +30,7 @@ class CustomTextField extends StatelessWidget {
       cursorColor: Colors.black,
       cursorHeight: 20,
       obscureText: obscureText,
+      textInputAction: textInputAction,
       style: TextStyle(
         color: Colors.black,
         fontSize: 16,

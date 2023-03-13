@@ -92,6 +92,7 @@ class SignInView extends GetView<SignInController> {
                           // prefixIcon: Image.asset(AssetsPaths.PHONE_ICON),
                           hintText: "Username",
                           keyboardType: TextInputType.phone,
+                          textInputAction: TextInputAction.next,
                           controller: controller.emailTextController,
                           prefixIcon: Padding(
                             padding: EdgeInsets.only(left: 2.w),
@@ -112,6 +113,7 @@ class SignInView extends GetView<SignInController> {
                         Obx(
                           () => CustomTextField(
                               obscureText: controller.isPasswordVisible.value,
+                              textInputAction: TextInputAction.done,
                               prefixIcon: Padding(
                                 padding: EdgeInsets.only(left: 2.w),
                                 child: CircleAvatar(
