@@ -26,6 +26,7 @@ abstract class Routes {
   static const RATING = _Paths.RATING;
   static const OTP_VERIFICATION = _Paths.OTP_VERIFICATION;
   static const SPLASH = _Paths.SPLASH;
+  static const FORGET_PASSWORD = _Paths.FORGET_PASSWORD;
 }
 
 abstract class _Paths {
@@ -49,4 +50,5 @@ abstract class _Paths {
   static const RATING = '/rating';
   static const OTP_VERIFICATION = '/otp-verification';
   static const SPLASH = '/splash';
+  static const FORGET_PASSWORD = '/forget-password';
 }

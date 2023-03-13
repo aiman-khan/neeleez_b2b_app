@@ -9,6 +9,7 @@ import 'package:neeleez_b2b/core/custom_text_field.dart';
 import '../../../../core/custom_elevated_button.dart';
 import '../../../../core/custom_textfield.dart';
 import '../../../../gen/assets.gen.dart';
+import '../../../routes/app_pages.dart';
 import '../../../utils/colors.dart';
 import '../controllers/otp_verification_controller.dart';
 
@@ -16,108 +17,72 @@ class OtpVerificationView extends GetView<OtpVerificationController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: ScreenUtil().screenWidth,
-        height: ScreenUtil().screenHeight,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.topRight,
-            colors: [
-              AppColors.lightRed,
-              AppColors.darkRed,
-            ],
+        body: Container(
+      width: ScreenUtil().screenWidth,
+      height: ScreenUtil().screenHeight,
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.topRight,
+          colors: [
+            AppColors.lightRed,
+            AppColors.darkRed,
+          ],
+        ),
+      ),
+      child: Container(
+        width: 390.w,
+        height: 630.h,
+        padding: EdgeInsets.symmetric(horizontal: 37.w, vertical: 33.h),
+        decoration: BoxDecoration(
+          color: AppColors.fontColorWhite,
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(33.r),
+            topLeft: Radius.circular(33.r),
           ),
         ),
-        child: Container(
-          width: 390.w,
-          height: 630.h,
-          padding: EdgeInsets.symmetric(horizontal: 37.w, vertical: 33.h),
-          decoration: BoxDecoration(
-            color: AppColors.fontColorWhite,
-            borderRadius: BorderRadius.only(
-              topRight: Radius.circular(33.r),
-              topLeft: Radius.circular(33.r),
-            ),
-          ),
-          child: Form(
-            key: controller.verifyOtpFormKey,
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  18.hb,
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          Get.back();
-                        },
-                        child: Assets.pngs.back.image(
-                          height: 18.r,
-                        ),
-                      ),
-                      Assets.pngs.logo.image(
-                        width: 92.w,
-                        height: 141.h,
-                      ),
-                      Assets.pngs.back
-                          .image(height: 18.r, color: Colors.transparent),
-                    ],
-                  ),
-                  40.hb,
-                  Text(
-                    "Verify OTP?",
-                    style: TextStyle(
-                        fontSize: 24.sp,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.fontColorGrey),
-                  ),
-                  10.hb,
-                  Text(
-                    "Enter 4-digit OTP sent to your email address.",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.fontColorGrey),
-                  ),
-                  80.hb,
-                  //Place 4 digit OTP TextField Here
-
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      for (var index = 0;
-                          index < controller.nodes.length;
-                          index++)
-                        OTPTextField(
-                          node: controller.nodes[index],
-                          index: index,
-                          onChanged: controller.onPinChanged,
-                        ),
-                    ],
-                  ),
-                  120.hb,
-                  CustomElevatedButton(
-                      width: 360,
-                      height: 52,
-                      title: "Verify OTP",
-                      fontSize: 14,
+        child: Form(
+          key: controller.verifyOtpFormKey,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                18.hb,
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    InkWell(
                       onTap: () {
-                        // Get.toNamed(Routes.PAGE3_JOB_NOTIFICATION);
+                        Get.back();
                       },
-                      backgroundColor1: AppColors.lightRed,
-                      backgroundColor2: AppColors.lightRed)
-                ],
-              ),
+                      child: Assets.pngs.back.image(
+                        height: 18.r,
+                      ),
+                    ),
+                    Assets.pngs.logo.image(
+                      width: 92.w,
+                      height: 141.h,
+                    ),
+                  ],
+                ),
+                120.hb,
+                CustomElevatedButton(
+                    width: 360,
+                    height: 52,
+                    title: "Verify OTP",
+                    fontSize: 14,
+                    onTap: () {
+                      Get.toNamed(Routes.PAGE3_JOB_NOTIFICATION);
+                    },
+                    backgroundColor1: AppColors.lightRed,
+                    backgroundColor2: AppColors.lightRed)
+              ],
             ),
           ),
         ),
       ),
-    );
+    ));
   }
 }
 

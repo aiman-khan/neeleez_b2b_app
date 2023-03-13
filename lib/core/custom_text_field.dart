@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:neeleez_b2b/app/utils/colors.dart';
 
 class CustomTextField extends StatelessWidget {
   CustomTextField(
@@ -8,6 +9,8 @@ class CustomTextField extends StatelessWidget {
       this.textInputAction = TextInputAction.next,
       this.prefixIcon,
       this.suffixIcon,
+      this.obscureText = false,
+      required this.controller,
       required this.hintText});
 
   TextInputType keyboardType;
@@ -16,13 +19,17 @@ class CustomTextField extends StatelessWidget {
   String hintText;
   Widget? prefixIcon;
   Widget? suffixIcon;
+  TextEditingController controller;
+  bool obscureText;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       validator: validator,
+      controller: controller,
       cursorColor: Colors.black,
       cursorHeight: 20,
+      obscureText: obscureText,
       style: TextStyle(
         color: Colors.black,
         fontSize: 16,
