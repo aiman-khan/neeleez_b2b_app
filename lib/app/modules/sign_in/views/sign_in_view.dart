@@ -210,7 +210,7 @@ class SignInView extends GetView<SignInController> {
                             onTap: () async {
                               if (controller.signInKey.currentState!
                                   .validate()) {
-                                await controller.logiiiin(
+                                await controller.login(
                                     controller.emailTextController.text,
                                     controller.passwordTextController.text);
                               }

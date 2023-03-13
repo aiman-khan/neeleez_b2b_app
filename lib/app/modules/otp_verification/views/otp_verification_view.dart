@@ -16,6 +16,8 @@ import '../controllers/otp_verification_controller.dart';
 class OtpVerificationView extends GetView<OtpVerificationController> {
   @override
   Widget build(BuildContext context) {
+    dynamic username = Get.arguments;
+
     return Scaffold(
       body: Container(
         width: ScreenUtil().screenWidth,
@@ -96,6 +98,7 @@ class OtpVerificationView extends GetView<OtpVerificationController> {
                       OTPTextField(
                         node: controller.nodes[index],
                         index: index,
+                        textEditingController: controller.otpControllers[index],
                         onChanged: controller.onPinChanged,
                       ),
                   ],
@@ -107,7 +110,9 @@ class OtpVerificationView extends GetView<OtpVerificationController> {
                     title: "Verify OTP",
                     fontSize: 14,
                     onTap: () {
-                      Get.toNamed(Routes.PAGE3_JOB_NOTIFICATION);
+                      print("-------$username ");
+
+                      controller.verifyOTP(username);
                     },
                     backgroundColor1: AppColors.lightRed,
                     backgroundColor2: AppColors.lightRed)
@@ -126,59 +131,66 @@ class OTPTextField extends StatelessWidget {
     this.onChanged,
     required this.node,
     required this.index,
+    required this.textEditingController,
   }) : super(key: key);
 
   final int index;
   final FocusNode node;
   final void Function(String, int)? onChanged;
+  final TextEditingController textEditingController;
 
   @override
   Widget build(BuildContext context) {
-    final OtpVerificationController controller =
-        Get.put(OtpVerificationController());
     return Row(
       children: [
-        Form(
-          //   key: controller.formKey,
-          child: Container(
-            height: 65,
-            child: AspectRatio(
-              aspectRatio: 1.0,
-              child: TextFormField(
-                autofocus: true,
-                focusNode: node,
-                style: TextStyle(
-                  fontSize: 35.sp,
+        Container(
+          height: 65,
+          child: AspectRatio(
+            aspectRatio: 1.0,
+            child: TextFormField(
+              autofocus: true,
+              controller: textEditingController,
+              focusNode: node,
+              onChanged: (value) {
+                if (onChanged != null) {
+                  onChanged!(value, index);
+                }
+              },
+              style: TextStyle(
+                fontSize: 35.sp,
+              ),
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return '';
+                }
+                return null;
+              },
+              inputFormatters: [
+                FilteringTextInputFormatter.allow(
+                  RegExp(r'^[0-9]'),
+                )
+              ],
+              showCursor: false,
+              readOnly: false,
+              textAlign: TextAlign.center,
+              keyboardType: TextInputType.number,
+              maxLength: 1,
+              decoration: InputDecoration(
+                focusColor: Color(0xffE607A),
+                counter: Offstage(),
+                border: UnderlineInputBorder(),
+                enabledBorder: const UnderlineInputBorder(
+                  borderSide: const BorderSide(color: Colors.grey, width: 1.0),
                 ),
-                validator: controller.validateOTP,
-                onChanged: (value) {
-                  if (onChanged != null) {
-                    onChanged!(value, index);
-                  }
-                },
-                showCursor: false,
-                readOnly: false,
-                textAlign: TextAlign.center,
-                keyboardType: TextInputType.number,
-                maxLength: 1,
-                decoration: InputDecoration(
-                  focusColor: Color(0xffE607A),
-                  counter: Offstage(),
-                  border: UnderlineInputBorder(),
-                  enabledBorder: const UnderlineInputBorder(
-                    borderSide:
-                        const BorderSide(color: Colors.grey, width: 1.0),
-                  ),
-                  focusedBorder: const UnderlineInputBorder(
-                    borderSide:
-                        const BorderSide(color: AppColors.darkRed, width: 2.0),
-                  ),
-                  hintText: "0",
-                  hintStyle: TextStyle(
-                      fontSize: 35.sp,
-                      color: Color(0xffBFBFBF),
-                      fontWeight: FontWeight.w400),
+                focusedBorder: const UnderlineInputBorder(
+                  borderSide:
+                      const BorderSide(color: AppColors.darkRed, width: 2.0),
                 ),
+                hintText: "0",
+                hintStyle: TextStyle(
+                    fontSize: 35.sp,
+                    color: Color(0xffBFBFBF),
+                    fontWeight: FontWeight.w400),
               ),
             ),
           ),

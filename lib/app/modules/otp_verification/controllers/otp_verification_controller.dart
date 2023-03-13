@@ -1,10 +1,14 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:neeleez_b2b/app/utils/app_popups.dart';
 
+import '../../../data/remote/api_endpoint.dart';
 import '../../../routes/app_pages.dart';
+import '../../../utils/colors.dart';
 
 class OtpVerificationController extends GetxController {
-  //TODO: Implement OtpVerificationController
+  Dio dio = Dio();
 
   final count = 0.obs;
   GlobalKey<FormState> verifyOtpFormKey = GlobalKey<FormState>();
@@ -13,7 +17,6 @@ class OtpVerificationController extends GetxController {
   RxBool autofocus = true.obs;
 
   List<FocusNode> nodes = [FocusNode(), FocusNode(), FocusNode(), FocusNode()];
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   String? validateOTP(String? value) {
     print("empty");
@@ -28,10 +31,22 @@ class OtpVerificationController extends GetxController {
     return null;
   }
 
-  verifyOTP() {
+  verifyOTP(String username) async {
     try {
-      if (formKey.currentState!.validate()) {
-        formKey.currentState!.save();
+      if (verifyOtpFormKey.currentState!.validate()) {
+        verifyOtpFormKey.currentState!.save();
+        print("-yy------$username");
+
+        final code = otpControllers
+            .map((e) => e.text)
+            .reduce((value, element) => "$value$element");
+
+        AppPopUps().showProgressDialog(context: Get.context);
+        print("-------$username ----- $code");
+
+        await verifyCode(username, int.parse(code));
+
+        AppPopUps().dismissDialog(Get.context);
       }
     } catch (e) {
       print("error");
@@ -39,6 +54,42 @@ class OtpVerificationController extends GetxController {
       //   title: 'Error',
       //   message: "",
       // ));
+    }
+  }
+
+  Future<void> verifyCode(String username, int code) async {
+    try {
+      final response = await dio.post(
+        ApiEndPoint.verifyEmail,
+        queryParameters: {
+          "code": code,
+          "username": username,
+          "verificationType": 2
+        },
+        options: Options(headers: {'Content-Type': 'application/json'}),
+        data: {"code": code, "username": username, "verificationType": 2},
+      );
+      if (response.data['success']) {
+        Get.snackbar(
+          "Success!",
+          response.data['message'],
+          snackPosition: SnackPosition.TOP,
+          backgroundColor: AppColors.darkRed,
+          colorText: AppColors.fontColorWhite,
+        );
+        print('${response.data['message']}');
+        Get.toNamed(Routes.PAGE3_JOB_NOTIFICATION);
+      } else {
+        Get.snackbar(
+          "Error!",
+          response.data['message'],
+          snackPosition: SnackPosition.TOP,
+          backgroundColor: AppColors.darkRed,
+          colorText: AppColors.fontColorWhite,
+        );
+      }
+    } catch (e) {
+      print('Failed to send verification email: $e');
     }
   }
 
@@ -76,6 +127,11 @@ class OtpVerificationController extends GetxController {
   }
 
   @override
-  void onClose() {}
+  void onClose() {
+    for (final node in nodes) {
+      node.dispose();
+    }
+  }
+
   void increment() => count.value++;
 }
