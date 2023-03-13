@@ -12,4 +12,7 @@ class ApiEndPoint {
   // send email verification
   static String get sendEmailVerification =>
       "$baseUrl/EmailVerification/send-verification-email";
+
+  // verify email
+  static String get verifyEmail => "$baseUrl/EmailVerification/verify-email";
 }
