@@ -28,6 +28,8 @@ import 'package:neeleez_b2b/app/modules/reports/bindings/reports_binding.dart';
 import 'package:neeleez_b2b/app/modules/reports/views/reports_view.dart';
 import 'package:neeleez_b2b/app/modules/sign_in/bindings/sign_in_binding.dart';
 import 'package:neeleez_b2b/app/modules/sign_in/views/sign_in_view.dart';
+import 'package:neeleez_b2b/app/modules/splash/bindings/splash_binding.dart';
+import 'package:neeleez_b2b/app/modules/splash/views/splash_view.dart';
 import 'package:neeleez_b2b/app/modules/task_details/bindings/task_details_binding.dart';
 import 'package:neeleez_b2b/app/modules/task_details/views/task_details_view.dart';
 import 'package:neeleez_b2b/app/modules/tradeperson_list/bindings/tradeperson_list_binding.dart';
@@ -134,6 +136,11 @@ class AppPages {
       name: _Paths.OTP_VERIFICATION,
       page: () => OtpVerificationView(),
       binding: OtpVerificationBinding(),
+    ),
+    GetPage(
+      name: _Paths.SPLASH,
+      page: () => SplashView(),
+      binding: SplashBinding(),
     ),
   ];
 }

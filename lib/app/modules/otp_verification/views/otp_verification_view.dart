@@ -42,75 +42,77 @@ class OtpVerificationView extends GetView<OtpVerificationController> {
           ),
           child: Form(
             key: controller.verifyOtpFormKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                18.hb,
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        Get.back();
-                      },
-                      child: Assets.pngs.back.image(
-                        height: 18.r,
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  18.hb,
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Get.back();
+                        },
+                        child: Assets.pngs.back.image(
+                          height: 18.r,
+                        ),
                       ),
-                    ),
-                    Assets.pngs.logo.image(
-                      width: 92.w,
-                      height: 141.h,
-                    ),
-                    Assets.pngs.back
-                        .image(height: 18.r, color: Colors.transparent),
-                  ],
-                ),
-                40.hb,
-                Text(
-                  "Verify OTP?",
-                  style: TextStyle(
-                      fontSize: 24.sp,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.fontColorGrey),
-                ),
-                10.hb,
-                Text(
-                  "Enter 4-digit OTP sent to your email address.",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.fontColorGrey),
-                ),
-                80.hb,
-                //Place 4 digit OTP TextField Here
+                      Assets.pngs.logo.image(
+                        width: 92.w,
+                        height: 141.h,
+                      ),
+                      Assets.pngs.back
+                          .image(height: 18.r, color: Colors.transparent),
+                    ],
+                  ),
+                  40.hb,
+                  Text(
+                    "Verify OTP?",
+                    style: TextStyle(
+                        fontSize: 24.sp,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.fontColorGrey),
+                  ),
+                  10.hb,
+                  Text(
+                    "Enter 4-digit OTP sent to your email address.",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.fontColorGrey),
+                  ),
+                  80.hb,
+                  //Place 4 digit OTP TextField Here
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    for (var index = 0;
-                        index < controller.nodes.length;
-                        index++)
-                      OTPTextField(
-                        node: controller.nodes[index],
-                        index: index,
-                        onChanged: controller.onPinChanged,
-                      ),
-                  ],
-                ),
-                120.hb,
-                CustomElevatedButton(
-                    width: 360,
-                    height: 52,
-                    title: "Verify OTP",
-                    fontSize: 14,
-                    onTap: () {
-                      // Get.toNamed(Routes.PAGE3_JOB_NOTIFICATION);
-                    },
-                    backgroundColor1: AppColors.lightRed,
-                    backgroundColor2: AppColors.lightRed)
-              ],
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      for (var index = 0;
+                          index < controller.nodes.length;
+                          index++)
+                        OTPTextField(
+                          node: controller.nodes[index],
+                          index: index,
+                          onChanged: controller.onPinChanged,
+                        ),
+                    ],
+                  ),
+                  120.hb,
+                  CustomElevatedButton(
+                      width: 360,
+                      height: 52,
+                      title: "Verify OTP",
+                      fontSize: 14,
+                      onTap: () {
+                        // Get.toNamed(Routes.PAGE3_JOB_NOTIFICATION);
+                      },
+                      backgroundColor1: AppColors.lightRed,
+                      backgroundColor2: AppColors.lightRed)
+                ],
+              ),
             ),
           ),
         ),
