@@ -31,18 +31,32 @@ class ForgetPasswordController extends GetxController {
       AppPopUps().dismissDialog(Get.context);
 
       if (response.statusCode == 200) {
-        print('200');
-        Get.snackbar(
-          "Success!",
-          response.data['message'],
-          snackPosition: SnackPosition.TOP,
-          backgroundColor: AppColors.darkRed,
-          colorText: AppColors.fontColorWhite,
-        );
-        Get.toNamed(
-          Routes.OTP_VERIFICATION,
-          arguments: {"username": userName},
-        );
+        if(response.data['success'] == true)
+          {
+            Get.snackbar(
+              response.data['message'],
+              "",
+              snackPosition: SnackPosition.TOP,
+              backgroundColor: AppColors.darkGreen,
+              colorText: AppColors.fontColorWhite,
+            );
+            Get.toNamed(
+              Routes.OTP_VERIFICATION,
+              arguments: {"username": userName},
+            );
+          }
+        else
+          {
+            Get.snackbar(
+              response.data['message'],
+              "",
+              snackPosition: SnackPosition.TOP,
+              backgroundColor: AppColors.darkRed,
+              colorText: AppColors.fontColorWhite,
+            );
+
+          }
+
 
         // request was successful
       } else if (response.statusCode == 400) {

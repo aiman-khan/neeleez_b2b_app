@@ -132,11 +132,11 @@ class SignInView extends GetView<SignInController> {
                                       child: controller.isPasswordVisible.value
                                           ? Icon(
                                               Icons.visibility_outlined,
-                                              size: 22.h,
+                                              size: 24.h,
                                               color: Colors.black,
                                             )
                                           : Icon(Icons.visibility_off_outlined,
-                                              size: 22.h,
+                                              size: 24.h,
                                               color: Colors.black))),
                               hintText: "Password",
                               keyboardType: TextInputType.visiblePassword,
