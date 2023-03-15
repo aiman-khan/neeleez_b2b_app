@@ -28,6 +28,7 @@ class CustomTextField extends StatelessWidget {
       validator: validator,
       controller: controller,
       cursorColor: Colors.black,
+      textInputAction: textInputAction,
       cursorHeight: 20,
       obscureText: obscureText,
       style: TextStyle(

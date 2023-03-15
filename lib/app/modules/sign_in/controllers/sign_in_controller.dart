@@ -64,13 +64,27 @@ class SignInController extends GetxController {
         ),
       );
 
-      if (response.statusCode == 200) {
-        print('200');
-        // request was successful
-      } else {
+      if (response.data['success']) {
+        print('${response.data['message']}');
+        AppPopUps().dismissDialog(Get.context);
+
+        Get.toNamed(Routes.PAGE3_JOB_NOTIFICATION);
+      }
+
+      // if (response.statusCode == 200) {
+      //   print('200');
+      //   AppPopUps().dismissDialog(Get.context);
+
+      //   Get.toNamed(
+      //     Routes.PAGE3_JOB_NOTIFICATION,
+      //   );
+
+      // request was successful
+      else {
+        AppPopUps().dismissDialog(Get.context);
+
         // handle other error responses
       }
-      AppPopUps().dismissDialog(Get.context);
     } on DioError catch (e) {
       if (e.response != null && e.response?.statusCode == 400) {
         AppPopUps().dismissDialog(Get.context);
