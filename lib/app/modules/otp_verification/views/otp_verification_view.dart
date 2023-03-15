@@ -80,7 +80,7 @@ class OtpVerificationView extends GetView<OtpVerificationController> {
                 ),
                 10.hb,
                 Text(
-                  "Enter 4-digit OTP sent to your email address.",
+                  "Enter 6-digit OTP sent to your email address.",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: 16.sp,
@@ -145,7 +145,7 @@ class OTPTextField extends StatelessWidget {
     return Row(
       children: [
         Container(
-          height: 65,
+          height: 40,
           child: AspectRatio(
             aspectRatio: 1.0,
             child: TextFormField(

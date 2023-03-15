@@ -89,20 +89,27 @@ class SignInController extends GetxController {
       if (e.response != null && e.response?.statusCode == 400) {
         AppPopUps().dismissDialog(Get.context);
 
-        showAlert(
-            Get.context,
-            "Email Not Verified",
-            "Please verify your email first.",
-            "Verify",
-            Assets.pngs.verify.path, () async {
-          AppPopUps().showProgressDialog(
-              color: AppColors.darkRed, context: Get.context);
-          await sendVerificationEmail(userName, 1);
-          AppPopUps().dismissDialog(Get.context);
+        if (e.response?.data['message'] == "Email not verified") {
+          showAlert(
+              Get.context,
+              e.response?.data['message'],
+              "Please verify your email first.",
+              "Verify",
+              Assets.pngs.verify.path, () async {
+            AppPopUps().showProgressDialog(
+                color: AppColors.darkRed, context: Get.context);
+            await sendVerificationEmail(userName, 1);
+            AppPopUps().dismissDialog(Get.context);
 
-          Get.back();
-          Get.toNamed(Routes.OTP_VERIFICATION, arguments: userName);
-        });
+            Get.back();
+            Get.toNamed(Routes.OTP_VERIFICATION, arguments: userName);
+          });
+        } else {
+          showAlert(Get.context, "", e.response?.data['message'], "OK",
+              Assets.pngs.error.path, () {
+            Get.back();
+          });
+        }
 
         // Get.snackbar(
         //   "Error!",

@@ -112,7 +112,7 @@ class SignInView extends GetView<SignInController> {
                         16.hb,
                         Obx(
                           () => CustomTextField(
-                              obscureText: controller.isPasswordVisible.value,
+                              obscureText: !controller.isPasswordVisible.value,
                               textInputAction: TextInputAction.done,
                               prefixIcon: Padding(
                                 padding: EdgeInsets.only(left: 2.w),
@@ -129,7 +129,7 @@ class SignInView extends GetView<SignInController> {
                                         controller.isPasswordVisible.value =
                                             !controller.isPasswordVisible.value;
                                       },
-                                      child: !controller.isPasswordVisible.value
+                                      child: controller.isPasswordVisible.value
                                           ? Icon(
                                               Icons.visibility_outlined,
                                               size: 22.h,

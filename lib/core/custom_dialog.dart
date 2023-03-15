@@ -8,8 +8,9 @@ import 'package:neeleez_b2b/core/custom_outlined_button.dart';
 import 'package:neeleez_b2b/gen/assets.gen.dart';
 
 import '../app/utils/colors.dart';
+import 'custom_elevated_button.dart';
 
-void showAlert(context, String title, String description, String buttonText,
+void showAlert(context, String title, String description, String? buttonText,
     String icon, Function()? onPressed) {
   showDialog(
       context: context,
@@ -83,31 +84,33 @@ void showAlert(context, String title, String description, String buttonText,
                       color: AppColors.fontColorGrey,
                     ),
                     20.hb,
-                    SizedBox(
-                      width: double.infinity,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          CustomOutlinedButton(
-                            width: 110.w,
-                            height: 40.h,
-                            text: buttonText,
-                            fontSize: 14,
-                            onPressed: onPressed!,
-                          ),
-                          // 5.wb,
-                          // CustomElevatedButton(
-                          //   width: 110.w,
-                          //   height: 40.h,
-                          //   fontSize: 14,
-                          //   title: "YES",
-                          //   onTap: () {},
-                          //   backgroundColor2: AppColors.darkRed,
-                          //   backgroundColor1: AppColors.darkRed,
-                          // ),
-                        ],
-                      ),
-                    ),
+                    buttonText != null
+                        ? SizedBox(
+                            width: double.infinity,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                // CustomOutlinedButton(
+                                //   width: 110.w,
+                                //   height: 40.h,
+                                //   text: buttonText,
+                                //   fontSize: 14,
+                                //   onPressed: onPressed!,
+                                // ),
+                                // 5.wb,
+                                CustomElevatedButton(
+                                  width: 110.w,
+                                  height: 40.h,
+                                  fontSize: 14,
+                                  title: buttonText,
+                                  onTap: onPressed!,
+                                  backgroundColor2: AppColors.darkRed,
+                                  backgroundColor1: AppColors.darkRed,
+                                ),
+                              ],
+                            ),
+                          )
+                        : SizedBox(),
                     10.hb,
                   ]),
                 ),

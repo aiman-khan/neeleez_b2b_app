@@ -16,7 +16,14 @@ class OtpVerificationController extends GetxController {
 
   RxBool autofocus = true.obs;
 
-  List<FocusNode> nodes = [FocusNode(), FocusNode(), FocusNode(), FocusNode()];
+  List<FocusNode> nodes = [
+    FocusNode(),
+    FocusNode(),
+    FocusNode(),
+    FocusNode(),
+    FocusNode(),
+    FocusNode()
+  ];
 
   String? validateOTP(String? value) {
     print("empty");
@@ -94,6 +101,8 @@ class OtpVerificationController extends GetxController {
   }
 
   List<TextEditingController> otpControllers = [
+    TextEditingController(),
+    TextEditingController(),
     TextEditingController(),
     TextEditingController(),
     TextEditingController(),
