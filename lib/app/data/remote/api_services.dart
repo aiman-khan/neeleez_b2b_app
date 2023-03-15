@@ -1,11 +1,8 @@
-import 'dart:convert';
-
 import 'package:get/get_core/src/get_main.dart';
 
 import 'api_endpoint.dart';
 import 'common/api_providers.dart';
 import 'common/api_resource.dart';
-import 'package:http/http.dart' as http;
 
 class ApiServices extends ApiProvider {
   static ApiServices instance = ApiServices._();

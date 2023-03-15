@@ -39,7 +39,10 @@ class ForgetPasswordController extends GetxController {
           backgroundColor: AppColors.darkRed,
           colorText: AppColors.fontColorWhite,
         );
-        Get.toNamed(Routes.OTP_VERIFICATION);
+        Get.toNamed(
+          Routes.OTP_VERIFICATION,
+          arguments: {"username": userName},
+        );
 
         // request was successful
       } else if (response.statusCode == 400) {

@@ -48,7 +48,7 @@ class SignInController extends GetxController {
     }
   }
 
-  Future<void> logiiiin(String userName, String password) async {
+  Future<void> login(String userName, String password) async {
     AppPopUps()
         .showProgressDialog(color: AppColors.darkRed, context: Get.context);
     try {
@@ -64,28 +64,27 @@ class SignInController extends GetxController {
         ),
       );
 
-      if (response.statusCode == 200) {
-        print('200');
-        // request was successful
-      } else if (response.statusCode == 400) {
-        // handle the 400 error response
-        print('400');
+      if (response.data['success']) {
+        print('${response.data['message']}');
+        AppPopUps().dismissDialog(Get.context);
 
-        showAlert(
-            Get.context,
-            "Email Not Verified",
-            "Please verify your email first.",
-            "Verify",
-            Assets.pngs.verify.path,
-            () => Get.toNamed(Routes.OTP_VERIFICATION));
+        Get.toNamed(Routes.PAGE3_JOB_NOTIFICATION);
+      }
 
-        await sendVerificationEmail(userName, 1);
-        final errorMessage = response.data['message'];
-        print('Error: $errorMessage');
-      } else {
+      // if (response.statusCode == 200) {
+      //   print('200');
+      //   AppPopUps().dismissDialog(Get.context);
+
+      //   Get.toNamed(
+      //     Routes.PAGE3_JOB_NOTIFICATION,
+      //   );
+
+      // request was successful
+      else {
+        AppPopUps().dismissDialog(Get.context);
+
         // handle other error responses
       }
-      AppPopUps().dismissDialog(Get.context);
     } on DioError catch (e) {
       if (e.response != null && e.response?.statusCode == 400) {
         AppPopUps().dismissDialog(Get.context);
@@ -101,7 +100,8 @@ class SignInController extends GetxController {
           await sendVerificationEmail(userName, 1);
           AppPopUps().dismissDialog(Get.context);
 
-          return Get.toNamed(Routes.OTP_VERIFICATION);
+          Get.back();
+          Get.toNamed(Routes.OTP_VERIFICATION, arguments: userName);
         });
 
         // Get.snackbar(
