@@ -104,6 +104,29 @@ class OtpVerificationView extends GetView<OtpVerificationController> {
                       ),
                   ],
                 ),
+                36.hb,
+                CustomTextFormField(
+                    labelText: "New Password",
+                    controller: controller.newPassword,
+                    keyboardType: TextInputType.text,
+                    validator: (v) {
+                      if (v!.isEmpty) {
+                        return "Password is required";
+                      }
+                    }),
+                12.hb,
+                CustomTextFormField(
+                    labelText: "Confirm Password",
+                    controller: controller.confirmPassword,
+                    keyboardType: TextInputType.text,
+                    validator: (v) {
+                      if (v!.isEmpty) {
+                        return "Password is required";
+                      }
+                      if (v != controller.newPassword.text) {
+                        return "Password does not match";
+                      }
+                    }),
                 120.hb,
                 CustomElevatedButton(
                     width: 360,

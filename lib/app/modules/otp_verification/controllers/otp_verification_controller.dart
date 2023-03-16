@@ -13,6 +13,8 @@ class OtpVerificationController extends GetxController {
   final count = 0.obs;
   GlobalKey<FormState> verifyOtpFormKey = GlobalKey<FormState>();
   TextEditingController otpController = TextEditingController();
+  TextEditingController newPassword = TextEditingController();
+  TextEditingController confirmPassword = TextEditingController();
 
   RxBool autofocus = true.obs;
 
@@ -71,10 +73,16 @@ class OtpVerificationController extends GetxController {
         queryParameters: {
           "code": code,
           "username": username,
-          "verificationType": 2
+          "verificationType": 2,
+          "password": newPassword.text
         },
         options: Options(headers: {'Content-Type': 'application/json'}),
-        data: {"code": code, "username": username, "verificationType": 2},
+        data: {
+          "code": code,
+          "username": username,
+          "verificationType": 2,
+          "password": newPassword.text
+        },
       );
       if (response.data['success']) {
         Get.snackbar(
