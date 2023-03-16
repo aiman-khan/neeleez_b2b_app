@@ -28,6 +28,8 @@ import 'package:neeleez_b2b/app/modules/rating/bindings/rating_binding.dart';
 import 'package:neeleez_b2b/app/modules/rating/views/rating_view.dart';
 import 'package:neeleez_b2b/app/modules/reports/bindings/reports_binding.dart';
 import 'package:neeleez_b2b/app/modules/reports/views/reports_view.dart';
+import 'package:neeleez_b2b/app/modules/reset_password/bindings/reset_password_binding.dart';
+import 'package:neeleez_b2b/app/modules/reset_password/views/reset_password_view.dart';
 import 'package:neeleez_b2b/app/modules/sign_in/bindings/sign_in_binding.dart';
 import 'package:neeleez_b2b/app/modules/sign_in/views/sign_in_view.dart';
 import 'package:neeleez_b2b/app/modules/task_details/bindings/task_details_binding.dart';
@@ -141,6 +143,11 @@ class AppPages {
       name: _Paths.FORGET_PASSWORD,
       page: () => ForgetPasswordView(),
       binding: ForgetPasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.RESET_PASSWORD,
+      page: () => ResetPasswordView(),
+      binding: ResetPasswordBinding(),
     ),
   ];
 }
