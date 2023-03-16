@@ -151,42 +151,42 @@ class SignInView extends GetView<SignInController> {
                         20.hb,
                         Obx(
                           () => Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              Row(
-                                children: [
-                                  InkWell(
-                                    onTap: () {
-                                      controller.rememberMe.toggle();
-                                    },
-                                    child: Container(
-                                      height: 18.r,
-                                      width: 18.r,
-                                      alignment: Alignment.center,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(5),
-                                        color: AppColors.lightRed,
-                                      ),
-                                      child: Icon(
-                                        Icons.check,
-                                        color: controller.rememberMe.value
-                                            ? AppColors.fontColorWhite
-                                            : AppColors.lightRed,
-                                        size: 14.r,
-                                      ),
-                                    ),
-                                  ),
-                                  5.wb,
-                                  Text(
-                                    'Remember me',
-                                    style: TextStyle(
-                                        fontSize: 12.sp,
-                                        fontWeight: FontWeight.bold,
-                                        color: AppColors.fontColorGrey),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ],
-                              ),
+                              // Row(
+                              //   children: [
+                              //     InkWell(
+                              //       onTap: () {
+                              //         controller.rememberMe.toggle();
+                              //       },
+                              //       child: Container(
+                              //         height: 18.r,
+                              //         width: 18.r,
+                              //         alignment: Alignment.center,
+                              //         decoration: BoxDecoration(
+                              //           borderRadius: BorderRadius.circular(5),
+                              //           color: AppColors.lightRed,
+                              //         ),
+                              //         child: Icon(
+                              //           Icons.check,
+                              //           color: controller.rememberMe.value
+                              //               ? AppColors.fontColorWhite
+                              //               : AppColors.lightRed,
+                              //           size: 14.r,
+                              //         ),
+                              //       ),
+                              //     ),
+                              //     5.wb,
+                              //     Text(
+                              //       'Remember me',
+                              //       style: TextStyle(
+                              //           fontSize: 12.sp,
+                              //           fontWeight: FontWeight.bold,
+                              //           color: AppColors.fontColorGrey),
+                              //       textAlign: TextAlign.center,
+                              //     ),
+                              //   ],
+                              // ),
                               InkWell(
                                 onTap: () {
                                   Get.toNamed(Routes.FORGET_PASSWORD);

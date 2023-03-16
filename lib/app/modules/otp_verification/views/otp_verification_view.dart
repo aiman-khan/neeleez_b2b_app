@@ -131,7 +131,7 @@ class OtpVerificationView extends GetView<OtpVerificationController> {
                 CustomElevatedButton(
                     width: 360,
                     height: 52,
-                    title: "Verify OTP",
+                    title: "Submit",
                     fontSize: 14,
                     onTap: () {
                       print("-------$username ");
