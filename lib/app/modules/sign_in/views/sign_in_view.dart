@@ -149,8 +149,7 @@ class SignInView extends GetView<SignInController> {
                               }),
                         ),
                         20.hb,
-                        Obx(
-                          () => Row(
+                        Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               // Row(
@@ -201,7 +200,7 @@ class SignInView extends GetView<SignInController> {
                                 ),
                               ),
                             ],
-                          ),
+
                         ),
                         45.hb,
                         CustomElevatedButton(
