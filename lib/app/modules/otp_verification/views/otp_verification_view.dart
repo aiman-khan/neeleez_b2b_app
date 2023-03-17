@@ -134,9 +134,13 @@ class OtpVerificationView extends GetView<OtpVerificationController> {
                     title: "Submit",
                     fontSize: 14,
                     onTap: () {
-                      print("-------$username ");
+                      print("-------${username['username']}");
 
-                      controller.verifyOTP(username);
+                      if(controller.verifyOtpFormKey.currentState!.validate())
+                        {
+                          controller.verifyOTP(username['username']);
+                        }
+
                     },
                     backgroundColor1: AppColors.lightRed,
                     backgroundColor2: AppColors.lightRed)
