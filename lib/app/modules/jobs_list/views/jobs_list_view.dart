@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'package:get/get.dart';
 import 'package:neeleez_b2b/app/constants/sized_box.dart';
 import 'package:neeleez_b2b/app/routes/app_pages.dart';
+import 'package:neeleez_b2b/app/utils/app_popups.dart';
 import 'package:neeleez_b2b/core/drawer.dart';
 import 'package:neeleez_b2b/gen/assets.gen.dart';
 
@@ -81,55 +83,62 @@ class JobsListView extends GetView<Page4JobsListController> {
                     ],
                   ),
                   6.hb,
-                  controller.jobs.isEmpty
-                      ? Column(
-                          children: [
-                            86.hb,
-                            Assets.pngs.noScheduledJobs.image(
-                              height: 180.r,
-                              width: 180.r,
-                            ),
-                            28.hb,
-                            Text(
-                              "There are no Ongoing jobs for you at the moment",
-                              style: TextStyle(
-                                color: AppColors.fontColorWhite,
-                                fontSize: 12.sp,
+                  controller.loading.value
+                      ? Container(
+                          decoration: BoxDecoration(
+                            //color: AppColors(..blackcardsBackground,
+                            color: Colors.transparent,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(25.r)),
+                            boxShadow: [
+                              BoxShadow(
+                                //  color: AppColors().shadowColor,
+                                color: Colors.transparent,
+                                spreadRadius: 5.r,
+                                blurRadius: 5.r,
+                                offset: const Offset(
+                                    3, 5), // changes position of shadow
                               ),
+                            ],
+                          ),
+                          height: 120.h,
+                          width: 120.h,
+                          child: Center(
+                            child: SpinKitCircle(
+                              color: AppColors.darkRed,
+                              size: 50.0,
                             ),
-                            14.hb,
-                            Text(
-                              "Please Keep Looking...",
-                              style: TextStyle(
-                                color: AppColors.fontColorWhite,
-                                fontSize: 12.sp,
-                              ),
-                            ),
-                          ],
+                          ),
                         )
-                      : ListView.separated(
-                          shrinkWrap: true,
-                          padding: EdgeInsets.symmetric(horizontal: 12.w),
-                          physics: NeverScrollableScrollPhysics(),
-                          separatorBuilder: (context, index) {
-                            return 36.hb;
-                          },
-                          itemCount: controller.jobs.length,
-                          itemBuilder: (context, index) {
-                            return JobCardWidget(
-                                jobModel: controller.jobs[index],
-                                button: CustomElevatedButton(
-                                  width: 150,
-                                  height: 40,
-                                  title: "More Details",
-                                  onTap: () {
-                                    Get.toNamed(
-                                        Routes.PAGE9_ACCEPT_SCHEDULED_JOB);
-                                  },
-                                  backgroundColor1: AppColors.darkRed,
-                                  backgroundColor2: AppColors.lightRed,
-                                ));
-                          }),
+                      : controller.jobs.isEmpty
+                          ? Container(
+                              height: 400.h,
+                              child: Assets.pngs.noScheduledJobs
+                                  .image(height: 220.r, width: 220.r),
+                            )
+                          : ListView.separated(
+                              shrinkWrap: true,
+                              padding: EdgeInsets.symmetric(horizontal: 12.w),
+                              physics: NeverScrollableScrollPhysics(),
+                              separatorBuilder: (context, index) {
+                                return 36.hb;
+                              },
+                              itemCount: controller.jobs.length,
+                              itemBuilder: (context, index) {
+                                return JobCardWidget(
+                                    jobModel: controller.jobs[index],
+                                    button: CustomElevatedButton(
+                                      width: 150,
+                                      height: 40,
+                                      title: "More Details",
+                                      onTap: () {
+                                        Get.toNamed(
+                                            Routes.PAGE9_ACCEPT_SCHEDULED_JOB);
+                                      },
+                                      backgroundColor1: AppColors.darkRed,
+                                      backgroundColor2: AppColors.lightRed,
+                                    ));
+                              }),
                   20.hb
                 ],
               ),

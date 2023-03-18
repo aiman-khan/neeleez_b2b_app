@@ -22,6 +22,7 @@ class Page4JobsListController extends GetxController {
           "2023-03-16T16:41:10.599Z",
         ),
       );
+      loading.value = false;
       update();
     } on MessageException catch (e) {
       Get.showSnackbar(GetSnackBar(
