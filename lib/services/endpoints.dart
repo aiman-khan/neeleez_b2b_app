@@ -18,8 +18,8 @@ class Urls {
 
   // get jobs
   String getJobs(int pageNo, int pageSize, String fromDate, String toDate,
-          int categoryId, int jobStatusId, int companyId) =>
-      "$baseUrl/Jobs?pageNo=$pageNo&pageSize=$pageSize&keyword=&fromDate=$fromDate&ToDate=$toDate&categoryId=$categoryId&jobStatusId=$jobStatusId&companyId=$companyId";
+          ) =>
+      "$baseUrl/Jobs?pageNo=$pageNo&pageSize=$pageSize&keyword=&fromDate=$fromDate&ToDate=$toDate";
 }
 
 class MessageException implements Exception {

@@ -12,16 +12,16 @@ class Page4JobsListController extends GetxController {
   final jobs = RxList<Jobs>([]);
 
   Future<void> loadFeed() async {
+
+
     try {
       jobs.addAll(
         await JobServices().getAllJobs(
           1,
-          1,
-          "2018-01-16T16:41:10.599Z",
-          "2018-01-16T16:41:10.599Z",
-          30329523,
-          30329523,
-          30329523,
+          10,
+          "2023-01-16T16:41:10.599Z",
+          "2023-03-16T16:41:10.599Z",
+
         ),
       );
       update();

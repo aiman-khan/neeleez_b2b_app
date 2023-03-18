@@ -10,12 +10,12 @@ import 'endpoints.dart';
 
 class JobServices with Urls {
   Future<List<Jobs>> getAllJobs(int pageNo, int pageSize, String fromDate,
-      String toDate, int categoryId, int jobStatusId, int companyId) async {
+      String toDate,) async {
     try {
       final response = await http.get(
           Uri.parse(
-            getJobs(pageNo, pageSize, fromDate, toDate, categoryId, jobStatusId,
-                companyId),
+            getJobs(pageNo, pageSize, fromDate, toDate
+                ),
           ),
           headers: {
             'Authorization':

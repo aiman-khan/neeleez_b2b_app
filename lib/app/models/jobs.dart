@@ -33,7 +33,7 @@ class Jobs {
   String? timeFrom;
   String? timeTo;
   bool? isTeam;
-  int? projectCompletionPercentage;
+  double? projectCompletionPercentage;
 
   Jobs(
       {this.id,

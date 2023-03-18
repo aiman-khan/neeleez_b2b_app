@@ -68,7 +68,7 @@ class SignInController extends GetxController {
         print('${response.data['message']}');
         AppPopUps().dismissDialog(Get.context);
 
-        Get.toNamed(Routes.PAGE3_JOB_NOTIFICATION);
+        Get.toNamed(Routes.PAGE4_JOBS_LIST);
       }
 
       // if (response.statusCode == 200) {
