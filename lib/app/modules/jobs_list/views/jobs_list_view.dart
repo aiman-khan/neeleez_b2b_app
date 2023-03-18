@@ -78,37 +78,51 @@ class JobsListView extends GetView<Page4JobsListController> {
                 ],
               ),
               20.hb,
-              JobCardWidget(
-                  button: CustomElevatedButton(
-                width: 150,
-                height: 40,
-                title: "More Details",
-                onTap: () {
-                  Get.toNamed(Routes.PAGE9_ACCEPT_SCHEDULED_JOB);
-                },
-                backgroundColor1: AppColors.darkRed,
-                backgroundColor2: AppColors.lightRed,
-              )),
-              45.hb,
-              JobCardWidget(
-                  button: CustomElevatedButton(
-                width: 150,
-                height: 40,
-                title: "More Details",
-                onTap: () {},
-                backgroundColor1: AppColors.darkRed,
-                backgroundColor2: AppColors.lightRed,
-              )),
-              45.hb,
-              JobCardWidget(
-                  button: CustomElevatedButton(
-                width: 150,
-                height: 40,
-                title: "More Details",
-                onTap: () {},
-                backgroundColor1: AppColors.darkRed,
-                backgroundColor2: AppColors.lightRed,
-              )),
+              controller.jobs.isEmpty
+                  ? Column(
+                      children: [
+                        86.hb,
+                        Assets.pngs.noScheduledJobs.image(
+                          height: 180.r,
+                          width: 180.r,
+                        ),
+                        28.hb,
+                        Text(
+                          "There are no Ongoing jobs for you at the moment",
+                          style: TextStyle(
+                            color: AppColors.fontColorWhite,
+                            fontSize: 12.sp,
+                          ),
+                        ),
+                        14.hb,
+                        Text(
+                          "Please Keep Looking...",
+                          style: TextStyle(
+                            color: AppColors.fontColorWhite,
+                            fontSize: 12.sp,
+                          ),
+                        ),
+                      ],
+                    )
+                  : SizedBox(
+                      height: 500.h,
+                      child: ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: controller.jobs.length,
+                          itemBuilder: (context, index) {
+                            return JobCardWidget(
+                                button: CustomElevatedButton(
+                              width: 150,
+                              height: 40,
+                              title: "More Details",
+                              onTap: () {
+                                Get.toNamed(Routes.PAGE9_ACCEPT_SCHEDULED_JOB);
+                              },
+                              backgroundColor1: AppColors.darkRed,
+                              backgroundColor2: AppColors.lightRed,
+                            ));
+                          }),
+                    ),
               20.hb
             ],
           ),
