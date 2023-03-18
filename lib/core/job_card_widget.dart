@@ -1,17 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 import 'package:neeleez_b2b/app/constants/sized_box.dart';
+import 'package:neeleez_b2b/app/models/jobs.dart';
 import 'package:neeleez_b2b/gen/assets.gen.dart';
 import '../app/utils/colors.dart';
 
 class JobCardWidget extends StatelessWidget {
   JobCardWidget({
     required this.button,
+    this.jobModel,
   });
   final Widget button;
+  final Jobs? jobModel;
 
   @override
   Widget build(BuildContext context) {
+    String dateString = jobModel?.jobDate ?? "";
+    DateTime date = DateTime.parse(dateString);
+
+    int year = date.year;
+    int month = date.month;
+    int day = date.day;
+
+    String formattedTime = DateFormat('h:mm a').format(date);
+
     return Container(
       width: 346.w,
       alignment: Alignment.bottomCenter,
@@ -31,7 +44,7 @@ class JobCardWidget extends StatelessWidget {
                   Column(
                     children: [
                       Text(
-                        'Mr. Ahmad Zulifiqar',
+                        jobModel?.customerName ?? "",
                         style: TextStyle(
                           fontSize: 14.sp,
                           fontWeight: FontWeight.bold,
@@ -63,7 +76,7 @@ class JobCardWidget extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                       Text(
-                        '#9098090',
+                        '#${jobModel?.id ?? 0}',
                         style: TextStyle(
                           fontSize: 14.sp,
                           fontWeight: FontWeight.bold,
@@ -93,7 +106,7 @@ class JobCardWidget extends StatelessWidget {
                       Column(
                         children: [
                           Text(
-                            '20th Feb',
+                            "$year-$month-$day",
                             style: TextStyle(
                               fontSize: 12.sp,
                               fontWeight: FontWeight.bold,
@@ -102,7 +115,7 @@ class JobCardWidget extends StatelessWidget {
                             textAlign: TextAlign.center,
                           ),
                           Text(
-                            '12:00 PM',
+                            formattedTime,
                             style: TextStyle(
                               fontSize: 10.sp,
                               color: AppColors.lightRed,
@@ -126,7 +139,7 @@ class JobCardWidget extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                       Text(
-                        'Mr Ahmad',
+                        jobModel?.customerName ?? "",
                         style: TextStyle(
                           fontSize: 14.sp,
                           fontWeight: FontWeight.bold,
@@ -148,13 +161,16 @@ class JobCardWidget extends StatelessWidget {
                         ),
                         textAlign: TextAlign.center,
                       ),
-                      Text(
-                        'AL Habibi, Dubai, UAE',
-                        style: TextStyle(
-                          fontSize: 14.sp,
-                          color: AppColors.fontColorBlack,
+                      Container(
+                        width: 230.w,
+                        child: Text(
+                          jobModel?.locationName ?? "",
+                          style: TextStyle(
+                            fontSize: 14.sp,
+                            color: AppColors.fontColorBlack,
+                          ),
+                          textAlign: TextAlign.end,
                         ),
-                        textAlign: TextAlign.center,
                       ),
                     ],
                   ),
@@ -173,7 +189,7 @@ class JobCardWidget extends StatelessWidget {
                       Container(
                         width: 260.w,
                         child: Text(
-                          'Lorem ipsum dolor sit amet, consectetur,',
+                          "${jobModel?.jobStatusId ?? 2}",
                           style: TextStyle(
                             fontSize: 13.sp,
                             color: AppColors.fontColorBlack,
@@ -196,9 +212,9 @@ class JobCardWidget extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                       Container(
-                        width: 230.w,
+                        width: 200.w,
                         child: Text(
-                          'eiusmod labore et dolore magna.',
+                          jobModel?.jobDescription ?? "",
                           style: TextStyle(
                             fontSize: 14.sp,
                             color: AppColors.fontColorBlack,
