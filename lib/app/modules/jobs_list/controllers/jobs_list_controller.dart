@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:neeleez_b2b/app/models/jobs.dart';
 
 import '../../../../services/endpoints.dart';
-import '../../../../services/feed_services.dart';
+import '../../../../services/job_services.dart';
 
 class Page4JobsListController extends GetxController {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
@@ -14,7 +14,7 @@ class Page4JobsListController extends GetxController {
   Future<void> loadFeed() async {
     try {
       jobs.addAll(
-        await FeedServices().getAllJobs(
+        await JobServices().getAllJobs(
           1,
           1,
           "2018-01-16T16:41:10.599Z",

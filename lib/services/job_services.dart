@@ -8,7 +8,7 @@ import 'package:neeleez_b2b/app/models/jobs.dart';
 
 import 'endpoints.dart';
 
-class FeedServices with Urls {
+class JobServices with Urls {
   Future<List<Jobs>> getAllJobs(int pageNo, int pageSize, String fromDate,
       String toDate, int categoryId, int jobStatusId, int companyId) async {
     try {
